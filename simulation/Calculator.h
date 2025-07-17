@@ -5,4 +5,4 @@ class Calculator {
 
     // Calculates distance between star 1 and star 2
     float calcDistance(Star& s1, Star& s2);
-}
+};

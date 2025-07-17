@@ -17,4 +17,5 @@ struct Star {
     }
 
     std::vector<Star> findClosestStars(unsigned int n);  // Finds closest n stars
-}
+};
+
