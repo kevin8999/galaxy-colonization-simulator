@@ -11,4 +11,6 @@ add_executable(galaxy_generator
         simulation/Galaxy.cpp
         simulation/Galaxy.h
         simulation/Star.cpp
-        simulation/Star.h)
+        simulation/Star.h
+        simulation/main.cpp
+)
