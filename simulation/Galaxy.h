@@ -7,8 +7,8 @@
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
 private:
-    std::string file;
-    std::vector<Stars> stars;
+    std::string file = "../hygdata_cleaned.csv";
+    std::vector<Star> stars;
 
     // Stores distances between Star A and Star B
     std::pair<std::pair<Star, Star>, float> distances;
@@ -19,9 +19,6 @@ public:
         file = fileName;
     }
 
-    std::vector<Star> setStarPos();
-    float calcDistance(Star& s1, Star& s2);
-    void findClosestStars();
     std::vector<Star> setStarPos();  // Sets star positions based on file configuration of galaxy as specified in `file`
 
 
