@@ -25,5 +25,9 @@ public:
 
     void print(unsigned int max = 50); // Prints data in stars
 
-    ~Galaxy();
+    ~Galaxy() {
+        distances = {};
+        file = "";
+        stars = {};
+    }
 };
