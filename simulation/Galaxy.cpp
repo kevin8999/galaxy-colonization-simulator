@@ -52,3 +52,12 @@ std::vector<Star> Galaxy::setStarPos() {
 
     return stars;
 }
+
+void Galaxy::print(unsigned int max) {
+    if (max > stars.size())
+        max = stars.size();
+
+    for (int i = 0; i < max; ++i) {
+        stars[i].print();
+    }
+}

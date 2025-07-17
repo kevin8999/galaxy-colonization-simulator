@@ -22,5 +22,7 @@ public:
     std::vector<Star> setStarPos();  // Sets star positions based on file configuration of galaxy as specified in `file`
 
 
+    void print(unsigned int max = 50); // Prints data in stars
+
     ~Galaxy();
 };
