@@ -14,8 +14,8 @@ private:
     std::pair<std::pair<Star, Star>, float> distances;
 
 public:
-    Galaxy();
-    Galaxy(std::string fileName) {
+    Galaxy() = default;
+    Galaxy(const std::string& fileName) {
         file = fileName;
     }
 
