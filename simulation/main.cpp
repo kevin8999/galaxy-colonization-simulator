@@ -4,7 +4,8 @@
 
 int main() {
     Galaxy galaxy;
-    galaxy
+    galaxy.setStarPos();
+    galaxy.print();
 
     return 0;
 }
