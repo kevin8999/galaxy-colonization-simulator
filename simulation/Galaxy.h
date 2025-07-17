@@ -22,6 +22,8 @@ public:
     std::vector<Star> setStarPos();
     float calcDistance(Star& s1, Star& s2);
     void findClosestStars();
+    std::vector<Star> setStarPos();  // Sets star positions based on file configuration of galaxy as specified in `file`
+
 
     ~Galaxy();
 };
