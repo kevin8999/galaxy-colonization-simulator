@@ -14,7 +14,12 @@ struct Star {
         position = inPos;
         solarLuminosity = inLum;
         id = inID;
+        visited = false;
     }
+    Star() {
+        visited = false;
+    }
+
 
     std::vector<Star> findClosestStars(unsigned int n);  // Finds closest n stars
 };
