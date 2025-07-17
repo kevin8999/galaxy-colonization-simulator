@@ -4,13 +4,13 @@
 
 struct Star {
     // Stores (x, y, z) or (x, y) position of a star
-    std::vector<int> position;
+    std::vector<float> position;
 
     float solarLuminosity;
     unsigned int id;
     bool visited;
 
-    Star(std::vector<int> inPos, float inLum, unsigned int inID) {
+    Star(std::vector<float>& inPos, float& inLum, unsigned int& inID) {
         position = inPos;
         solarLuminosity = inLum;
         id = inID;
