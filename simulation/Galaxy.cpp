@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-std::vector<Star> Galaxy::setStarPos() {
+std::vector<Star> Galaxy::load() {
     // Parse input of CSV
     std::ifstream inputStream(file);
     std::string line;

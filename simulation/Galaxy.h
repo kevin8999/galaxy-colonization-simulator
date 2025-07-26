@@ -19,7 +19,7 @@ public:
         file = fileName;
     }
 
-    std::vector<Star> setStarPos();  // Sets star positions based on file configuration of galaxy as specified in `file`
+    std::vector<Star> load();  // Loads star positions based on file configuration of galaxy as specified in `file`
 
     void findClosestStars();  // Tells each star in the galaxy to find its closest neighbors
 
