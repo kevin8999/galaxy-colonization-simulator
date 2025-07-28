@@ -44,8 +44,7 @@ bool compareDimension(std::vector<int>& x, std::vector<int>& y, unsigned int& i)
 template <typename T>
 class KDTree {
 private:
-    std::map<unsigned int, T> container;
-    unsigned int dimensions;
+    unsigned int K;
     unsigned int numNodes;
     unsigned int maxDepth;
 
