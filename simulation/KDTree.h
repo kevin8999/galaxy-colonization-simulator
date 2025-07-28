@@ -37,11 +37,6 @@
  *          Continue this process (comparing dimensions) while cycling through dimensions (1, 2, 3, 1, 2, 3, ...)
  */
 
-bool compareDimension(std::vector<int>& x, std::vector<int>& y, unsigned int& i) {
-    return x[i] < y[i];
-}
-
-template <typename T>
 class KDTree {
 private:
     unsigned int K;
