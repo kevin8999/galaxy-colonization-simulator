@@ -10,6 +10,8 @@ struct Star {
     unsigned int id;
     bool visited;
 
+    // FUNCTIONS
+
     Star(std::vector<float>& inPos, float& inLum, unsigned int& inID) {
         position = inPos;
         solarLuminosity = inLum;
