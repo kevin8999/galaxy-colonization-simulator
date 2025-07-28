@@ -26,7 +26,6 @@ public:
 
     ~Galaxy() {
         distances = {};
-        file = "";
         stars = {};
     }
 };
