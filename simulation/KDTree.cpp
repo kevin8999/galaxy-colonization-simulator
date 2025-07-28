@@ -60,3 +60,32 @@ T* KDTree<T>::insert(T* insertNode) {
     if (root == nullptr)
         root = insertNode;
 }
+
+void KDTree::print(unsigned int max) {
+    // Print the entire KD tree using BFS.
+    // NOTE: Children are printed left to right.
+
+    std::set<Node*> visited;
+    std::queue<Node*> q;
+
+    visited.insert(root);
+    q.push(root);
+
+    unsigned int count = 0;
+
+    while (!q.empty()) {
+        // Get the next node and process it
+        Node* curr = q.front();
+        curr->print();
+        q.pop();
+
+        if (curr->left != nullptr)
+            q.push(curr->left);
+        if (curr->right != nullptr)
+            q.push(curr->right);
+
+        count++;
+        if (count > max)
+            break;
+    }
+}
