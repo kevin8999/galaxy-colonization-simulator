@@ -3,9 +3,10 @@
 #include "Calculator.h"
 
 int main() {
+    std::string galaxyFile = "../data/hygdata_cleaned.csv";
     Galaxy galaxy;
-    galaxy.setStarPos();
-    galaxy.print();
+    galaxy.load(galaxyFile);
+
 
     return 0;
 }
