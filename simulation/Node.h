@@ -1,14 +1,20 @@
 #pragma once
 
-template <typename T>
+#include <vector>
+#include "Star.h"
+
+// Stores data for Star in KDTree
 class Node {
 public:
-    T value;
-    T* left;
-    T* right;
+    unsigned int id;
+    std::vector<int> position;
+    Star* left;
+    Star* right;
 
-    Node(T& input) {
-        value = input;
+    Node(unsigned int id, const std::vector<int>& position) {
+        this->id = id;
+        this->position = position;
+
         left = nullptr;
         right = nullptr;
     }
