@@ -19,11 +19,11 @@ public:
         right = nullptr;
     }
 
-    Node operator=(Node* other) {
+    Node operator=(Node& other) {
         if (this != &other) {
-            value = other->value;
-            left = other->left;
-            right = other->right;
+            position = other.position;
+            left = other.left;
+            right = other.right;
         }
 
         return *this;
