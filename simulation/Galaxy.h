@@ -26,6 +26,8 @@ public:
 
     void print(unsigned int max = 50); // Prints data in stars
 
+    std::vector<Star> getStars();
+
     ~Galaxy() {
         distances = {};
         stars = {};

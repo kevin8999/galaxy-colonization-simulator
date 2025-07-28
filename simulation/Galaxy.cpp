@@ -61,3 +61,7 @@ void Galaxy::print(unsigned int max) {
         stars[i].print();
     }
 }
+
+std::vector<Star> Galaxy::getStars() {
+    return stars;
+}
