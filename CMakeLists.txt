@@ -13,4 +13,6 @@ add_executable(galaxy_generator
         simulation/Star.cpp
         simulation/Star.h
         simulation/main.cpp
+        simulation/KDTree.cpp
+        simulation/KDTree.h
 )
