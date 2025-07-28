@@ -24,7 +24,7 @@ public:
 
     void findClosestStars();  // Tells each star in the galaxy to find its closest neighbors
 
-    void print(unsigned int max = 50); // Prints data in stars
+    void print(unsigned int max = 50) const; // Prints data in stars
 
     std::vector<Star> getStars();
 
