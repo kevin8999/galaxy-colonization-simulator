@@ -6,8 +6,9 @@
 
 /*  This file creates a data structure called a "KD-Tree".
  *
- *  A KD-Tree is short for "K-Dimensional Tree". It creates a tree where every node in the tree creates a hyperplane
- *  that splits the entire space into two parts.
+ *  A KD-Tree is short for "K-Dimensional Tree". A KD-Tree is a binary tree that organizes points in K dimensions.
+ *
+ *  However, it functions differently to a binary tree.
  *
  *  As an example, I will describe the insertion algorithm.
  *
