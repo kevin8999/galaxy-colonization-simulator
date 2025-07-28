@@ -1,5 +1,7 @@
 #pragma once
+
 #include <map>
+#include <vector>
 
 #include "Node.h"
 #include "Star.h"
