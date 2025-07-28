@@ -55,10 +55,9 @@ public:
         root = nullptr;
     }
 
-    Node<T>* root;
+    Node* root;
 
-    Node<T>* remove(Node<T>* removeNode);
-    Node<T>* search(Node<T>* searchNode);
+
     Node* insertRecursive(Node* currNode, Node& insertNode, unsigned int depth);
     Node* insert(Node insertNode);
 
