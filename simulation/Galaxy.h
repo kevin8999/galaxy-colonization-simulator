@@ -7,7 +7,6 @@
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
 private:
-    std::string file = "../data/hygdata_cleaned.csv";
     std::vector<Star> stars;
 
     // Stores distances between Star A and Star B

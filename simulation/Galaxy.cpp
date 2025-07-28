@@ -6,9 +6,9 @@
 #include <vector>
 #include <string>
 
-std::vector<Star> Galaxy::load() {
+std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
     // Parse input of CSV
-    std::ifstream inputStream(file);
+    std::ifstream inputStream(galaxyFile);
     std::string line;
 
     // Skip first line
