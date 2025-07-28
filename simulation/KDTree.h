@@ -44,8 +44,8 @@ private:
     unsigned int maxDepth;
 
 public:
-    KDTree(unsigned int dimensions) {
-        this->dimensions = dimensions;
+    KDTree(const unsigned int& dimensions) {
+        this->K = dimensions;  // K dimensions
         numNodes = 0;
         maxDepth = 0;
         root = nullptr;
@@ -62,5 +62,12 @@ public:
     Node* insertRecursive(Node* currNode, Node& insertNode, unsigned int depth);
     Node* insert(Node insertNode);
 
+    bool searchRecursive(Node *currNode, Node *insertNode, unsigned int depth);
+    bool search(Node* searchNode);
+
+    Node* remove(Node* removeNode);
+
+    void insertStars(std::vector<Star> &stars);
+    void print(unsigned int max);
 };
 
