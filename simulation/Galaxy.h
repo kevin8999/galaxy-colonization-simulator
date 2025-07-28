@@ -3,6 +3,7 @@
 #include "Star.h"
 
 #include <string>
+#include <unordered_map>
 
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
