@@ -7,11 +7,13 @@
 class Node {
 public:
     unsigned int id;
-    std::vector<int> position;
-    Star* left;
-    Star* right;
+    std::vector<float> position;
+    Node* left;
+    Node* right;
 
     Node(unsigned int id, const std::vector<int>& position) {
+
+    Node(const unsigned int& id, const std::vector<float>& position) {
         this->id = id;
         this->position = position;
 
@@ -20,6 +22,8 @@ public:
     }
 
     Node operator=(Node& other) {
+
+    Node operator=(const Node& other) {
         if (this != &other) {
             position = other.position;
             left = other.left;
