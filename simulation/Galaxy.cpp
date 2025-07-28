@@ -48,7 +48,10 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
         stars.push_back(star);
     }
 
-    std::cout << stars.size() << std::endl;
+    bool printSize = false;
+
+    if (printSize)
+        std::cout << stars.size() << std::endl;
 
     return stars;
 }
