@@ -10,7 +10,7 @@ private:
     std::vector<Star> stars;
 
     // Stores distances between Star A and Star B
-    std::pair<std::pair<Star, Star>, float> distances;
+    std::unordered_map<int, std::pair<int, float>> distances;
 
 public:
     Galaxy() = default;
