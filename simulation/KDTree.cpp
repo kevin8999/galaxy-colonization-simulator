@@ -55,10 +55,13 @@ bool KDTree::search(Node* searchNode) {
 }
 
 
-template<typename T>
-T* KDTree<T>::insert(T* insertNode) {
-    if (root == nullptr)
-        root = insertNode;
+void KDTree::insertStars(std::vector<Star>& stars) {
+    // Insert stars into KD tree
+
+    for (int i = 0; i < stars.size(); ++i) {
+        Node node(stars[i]);
+        insert(node);
+    }
 }
 
 void KDTree::print(unsigned int max) {
