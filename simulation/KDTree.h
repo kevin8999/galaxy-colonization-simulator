@@ -57,8 +57,10 @@ public:
 
     Node<T>* root;
 
-    Node<T>* insert(Node<T>* insertNode);
     Node<T>* remove(Node<T>* removeNode);
     Node<T>* search(Node<T>* searchNode);
+    Node* insertRecursive(Node* currNode, Node& insertNode, unsigned int depth);
+    Node* insert(Node insertNode);
+
 };
 
