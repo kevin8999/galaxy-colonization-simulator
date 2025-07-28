@@ -8,6 +8,7 @@
 class Galaxy {
 private:
     std::vector<Star> stars;
+    std::unordered_map<int, Star> starID;
 
     // Stores distances between Star A and Star B
     std::unordered_map<int, std::pair<int, float>> distances;
