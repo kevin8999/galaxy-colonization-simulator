@@ -11,7 +11,11 @@ public:
     Node* left;
     Node* right;
 
-    Node(unsigned int id, const std::vector<int>& position) {
+    Node() {
+        id = 0;
+        left = nullptr;
+        right = nullptr;
+    };
 
     Node(const unsigned int& id, const std::vector<float>& position) {
         this->id = id;
@@ -31,5 +35,32 @@ public:
         }
 
         return *this;
+    }
+
+    bool operator==(const Node& other) const {
+        if (this->position.size() != other.position.size()) {
+            return false;
+        }
+
+        for (unsigned int i = 0; i < position.size(); ++i) {
+            if (position[i] != other.position[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool operator!=(const Node& other) const {
+        // if this.numDimensions != other.numDimensions
+        if (this->position.size() != other.position.size()) {
+            return true;
+        }
+
+        for (unsigned int i = 0; i < position.size(); ++i) {
+            if (position[i] == other.position[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 };
