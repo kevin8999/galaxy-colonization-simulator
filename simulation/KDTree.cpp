@@ -130,8 +130,10 @@ void KDTree::print() {
 
 Node* closest(Node* target, const std::vector<Node*>& nodes) {
     // Returns closest node given a vector of nodes
-    if (target == nullptr)
+    if (target == nullptr) {
         std::cerr << "ERROR: Target node cannot be nullptr.";
+        return nullptr;
+    }
 
     Node* closestNode = nullptr;
     float closestDistance = INFINITY;
@@ -139,7 +141,7 @@ Node* closest(Node* target, const std::vector<Node*>& nodes) {
     for (Node* node : nodes) {
         if (node == nullptr) continue;
 
-        const float newDist = Calculator::calcDistance(target, node);
+        float newDist = Calculator::calcDistance(target, node);
 
         if (newDist < closestDistance) {
             closestDistance = newDist;
