@@ -69,7 +69,6 @@ void KDTree::print(unsigned int max) {
     // NOTE: Children are printed left to right.
 
     std::set<Node*> visited;
-    std::queue<Node*> q;
     std::queue<std::pair<Node*, unsigned int>> q;
 
 
