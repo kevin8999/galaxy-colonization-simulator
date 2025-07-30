@@ -73,5 +73,7 @@ public:
     void print(unsigned int max);
     void print();
 
+    Node* nearestNeighborRecursive(Node* top, Node* target, unsigned int depth);  // Helper function
+    Node* nearestNeighbor(Node* target);
 };
 

@@ -151,3 +151,65 @@ Node* closest(Node* target, const std::vector<Node*>& nodes) {
 
     return closestNode;
 }
+
+Node * KDTree::nearestNeighborRecursive(Node* top, Node* target, unsigned int depth) {
+    // Finds the node closest to target
+
+    if (top == nullptr)
+        return nullptr;
+    if (target == nullptr) {
+        std::cerr << "Cannot find nearest neighbor using nullptr target node." << "\n";
+        return nullptr;
+    }
+
+    unsigned int dimension = depth % K;
+
+    // Pick which node to traverse in KDTree
+    Node* nearBranch;
+    Node* farBranch;
+
+    if (target->position[dimension] < top->position[dimension]) {
+        nearBranch = top->left;
+        farBranch  = top->right;
+    }
+    else {
+        nearBranch = top->right;
+        farBranch  = top->left;
+    }
+
+    Node* nearNode = nearestNeighborRecursive(nearBranch, target, depth + 1);  // Find closest node in rest of KDTree
+
+    // Get all candidates (top and nearNode) and figure out which one is closest
+    std::vector<Node*> candidates;
+    candidates.push_back(top);
+    if (nearNode != nullptr) candidates.push_back(nearNode);
+
+    Node* closestNode = closest(target, candidates);
+
+    //std::cout << "Closest Node (with nearNode):" << "\n";
+    //closestNode->print();
+
+    // Compare the distance between target and closest node to its normal
+    float distance = Calculator::calcDistance(target, closestNode);
+    float distanceNormal = std::abs(target->position[dimension] - top->position[dimension]);
+
+    // Check farBranch to see if it has a node closer than closestNode (on nearBranch)
+    if (distance >= distanceNormal) {
+        Node* farNode = nearestNeighborRecursive(farBranch, target, depth + 1);
+
+        candidates.pop_back();              // candidates = {closestNode}
+        if (farNode != nullptr) {
+            candidates.push_back(farNode);  // candidates = {closestNode, farNode}
+
+            closestNode = closest(target, candidates);
+            //std::cout << "Closest Node (with farNode):" << "\n";
+            //closestNode->print();
+        }
+    }
+
+    return closestNode;
+}
+
+Node* KDTree::nearestNeighbor(Node* target) {
+    return nearestNeighborRecursive(root, target, 0);
+}
