@@ -14,7 +14,3 @@ void Star::print() const {
     std::cout << "Luminosity: " << solarLuminosity << std::endl;
     std::cout << "Visited: " << (visited ? "True" : "False") << std::endl;
 }
-
-std::vector<Star> Star::findClosestStars(unsigned int n) {
-
-}
