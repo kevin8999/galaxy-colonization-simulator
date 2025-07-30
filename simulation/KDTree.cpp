@@ -71,6 +71,7 @@ void KDTree::print(unsigned int max) {
     std::set<Node*> visited;
     std::queue<std::pair<Node*, unsigned int>> q;
 
+    unsigned int numProcessed = 0;
 
     visited.insert(root);
     q.push({root, 0});
@@ -88,8 +89,8 @@ void KDTree::print(unsigned int max) {
         if (curr->right != nullptr)
             q.push({curr->right, level + 1});
 
-        count++;
-        if (count > max)
+        numProcessed++;
+        if (numProcessed > max)
             break;
     }
 }
