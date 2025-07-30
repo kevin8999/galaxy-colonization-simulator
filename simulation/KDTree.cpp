@@ -112,3 +112,25 @@ void KDTree::print() {
     // Print the entire tree using BFS
     print(numNodes);
 }
+
+Node* closest(Node* target, const std::vector<Node*>& nodes) {
+    // Returns closest node given a vector of nodes
+    if (target == nullptr)
+        std::cerr << "ERROR: Target node cannot be nullptr.";
+
+    Node* closestNode = nullptr;
+    float closestDistance = INFINITY;
+
+    for (Node* node : nodes) {
+        if (node == nullptr) continue;
+
+        const float newDist = Calculator::calcDistance(target, node);
+
+        if (newDist < closestDistance) {
+            closestDistance = newDist;
+            closestNode = node;
+        }
+    }
+
+    return closestNode;
+}
