@@ -26,6 +26,14 @@ public:
         right = nullptr;
     }
 
+    Node(const std::vector<float>& position) {
+        this->id = 0;
+        this->position = position;
+
+        left = nullptr;
+        right = nullptr;
+    }
+
     Node(const Star& star) {
         this->id = star.id;
         this->position = star.position;
