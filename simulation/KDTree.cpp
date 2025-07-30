@@ -5,6 +5,8 @@
 #include <bits/stdc++.h>
 
 #include "Node.h"
+#include "Calculator.h"
+#include "KDTree.h"
 
 
 Node* KDTree::insertRecursive(Node* currNode, Node& insertNode, unsigned int depth) {
