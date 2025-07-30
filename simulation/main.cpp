@@ -1,7 +1,5 @@
 #include "Galaxy.h"
 #include "Star.h"
-#include "Calculator.h"
-
 #include "KDTree.h"
 
 #include <iostream>
