@@ -94,3 +94,8 @@ void KDTree::print(unsigned int max) {
             break;
     }
 }
+
+void KDTree::print() {
+    // Print the entire tree using BFS
+    print(numNodes);
+}
