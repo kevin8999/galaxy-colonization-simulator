@@ -70,22 +70,24 @@ void KDTree::print(unsigned int max) {
 
     std::set<Node*> visited;
     std::queue<Node*> q;
+    std::queue<std::pair<Node*, unsigned int>> q;
+
 
     visited.insert(root);
-    q.push(root);
-
-    unsigned int count = 0;
+    q.push({root, 0});
 
     while (!q.empty()) {
         // Get the next node and process it
-        Node* curr = q.front();
+        auto [curr, level] = q.front();
+        std::cout << "Level: " << level << "\n";
         curr->print();
+        std::cout << "\n";
         q.pop();
 
         if (curr->left != nullptr)
-            q.push(curr->left);
+            q.push({curr->left, level + 1});
         if (curr->right != nullptr)
-            q.push(curr->right);
+            q.push({curr->right, level + 1});
 
         count++;
         if (count > max)
