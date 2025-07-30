@@ -6,8 +6,6 @@
 
 #include "Node.h"
 
-#include <queue>
-#include <set>
 
 Node* KDTree::insertRecursive(Node* currNode, Node& insertNode, unsigned int depth) {
     if (currNode == nullptr)
