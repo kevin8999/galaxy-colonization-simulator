@@ -64,6 +64,14 @@ void KDTree::insertStars(std::vector<Star>& stars) {
     }
 }
 
+void KDTree::insertNodes(std::vector<Node>& nodes) {
+    // Insert nodes into KD tree
+
+    for (const Node& node : nodes) {
+        insert(node);
+    }
+}
+
 void KDTree::print(unsigned int max) {
     // Print the entire KD tree using BFS.
     // NOTE: Children are printed left to right.

@@ -62,6 +62,8 @@ public:
 
     Node* insertRecursive(Node* currNode, Node& insertNode, unsigned int depth);
     Node* insert(Node insertNode);
+    void insertStars(std::vector<Star> &stars);
+    void insertNodes(std::vector<Node> &nodes);
 
     bool searchRecursive(Node *currNode, Node *insertNode, unsigned int depth);
     bool search(Node* searchNode);
