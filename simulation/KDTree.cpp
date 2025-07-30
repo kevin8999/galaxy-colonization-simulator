@@ -10,10 +10,10 @@ Node* KDTree::insertRecursive(Node* currNode, Node& insertNode, unsigned int dep
 
     unsigned int currDimension = depth % K;
 
-    if (currNode->position[currDimension] < insertNode.position[currDimension]) {
+    if (insertNode.position[currDimension] < currNode->position[currDimension]) {
         currNode->left = insertRecursive(currNode->left, insertNode, depth + 1);
     }
-    else if (currNode->position[currDimension] >= insertNode.position[currDimension]) {
+    else {
         currNode->right = insertRecursive(currNode->right, insertNode, depth + 1);
     }
 
