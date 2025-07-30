@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-int main() {
+void printKDTreeTest() {
     std::string galaxyFile = "../data/hygdata_cleaned.csv";
     Galaxy galaxy;
     galaxy.load(galaxyFile);
@@ -17,8 +17,10 @@ int main() {
 
     unsigned int max = 30;
     tree.print(max);
+}
 
-    std::cout << "Finished" << std::endl;
+int main() {
+    printKDTreeTest();
 
     return 0;
 }
