@@ -80,7 +80,12 @@ public:
     }
 
     void print() const {
-        std::cout << "ID: " << id << "\n";
+        if (this == nullptr) {
+            std::cerr << "Node::print() : Node is nullptr" << "\n";
+            return;
+        }
+
+        std::cout << "ID: " << this->id << "\n";
         std::cout << "Position: " << "(";
 
         for (int i = 0; i < position.size() - 1; ++i)
