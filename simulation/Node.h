@@ -81,11 +81,11 @@ public:
 
     void print() const {
         std::cout << "ID: " << id << "\n";
-        std::cout << "Position: ";
+        std::cout << "Position: " << "(";
 
         for (int i = 0; i < position.size() - 1; ++i)
-            std::cout << position[i] << " ";
+            std::cout << position[i] << ", ";
 
-        std::cout << position[position.size() - 1] << "\n";
+        std::cout << position[position.size() - 1] << ")" << "\n";
     }
 };
