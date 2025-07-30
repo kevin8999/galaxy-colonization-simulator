@@ -81,6 +81,11 @@ void KDTree::print(unsigned int max) {
     // Print the entire KD tree using BFS.
     // NOTE: Children are printed left to right.
 
+    if (root == nullptr) {
+        std::cerr << "KDTree::print() : root is nullptr. Nothing to print.\n";
+        return;
+    }
+
     std::set<Node*> visited;
     std::queue<std::pair<Node*, unsigned int>> q;
 
@@ -92,18 +97,28 @@ void KDTree::print(unsigned int max) {
     while (!q.empty()) {
         // Get the next node and process it
         auto [curr, level] = q.front();
+        q.pop();
+
+        if (curr == nullptr) continue;
+
         std::cout << "Level: " << level << "\n";
         curr->print();
         std::cout << "\n";
-        q.pop();
 
-        if (curr->left != nullptr)
+        bool leftChildNotVisited = visited.find(curr->left) == visited.end();
+        bool rightChildNotVisited = visited.find(curr->right) == visited.end();
+
+        if (curr->left != nullptr && leftChildNotVisited) {
             q.push({curr->left, level + 1});
-        if (curr->right != nullptr)
+            visited.insert(curr->left);
+        }
+        if (curr->right != nullptr && rightChildNotVisited) {
             q.push({curr->right, level + 1});
+            visited.insert(curr->right);
+        }
 
         numProcessed++;
-        if (numProcessed > max)
+        if (numProcessed >= max)
             break;
     }
 }
