@@ -70,7 +70,6 @@ public:
 
     Node* remove(Node* removeNode);
 
-    void insertStars(std::vector<Star> &stars);
     void print(unsigned int max);
     void print();
 
