@@ -16,9 +16,6 @@ private:
 
 public:
     Galaxy() = default;
-    Galaxy(const std::string& fileName) {
-        file = fileName;
-    }
 
     std::vector<Star> load(const std::string& galaxyFile);  // Loads star positions based on file configuration of galaxy as specified in `file`
 
