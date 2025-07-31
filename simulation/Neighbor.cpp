@@ -1,7 +1,8 @@
 #include "Neighbor.h"
 #include "Calculator.h"
 
-float Neighbor::calcDistance() {
+Neighbor::Neighbor(Node *target, Node *node) {
+    this->target = target;
+    this->node = node;
     distance = Calculator::calcDistance(target, node);
-    return distance;
 }
