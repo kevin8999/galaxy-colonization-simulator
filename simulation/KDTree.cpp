@@ -153,10 +153,10 @@ Node* closest(Node* target, const std::vector<Node*>& nodes) {
     return closestNode;
 }
 
-Node * KDTree::nearestNeighborRecursive(Node* top, Node* target, unsigned int depth) {
+Node * KDTree::nearestNeighborRecursive(Node* curr, Node* target, unsigned int depth) {
     // Finds the node closest to target
 
-    if (top == nullptr)
+    if (curr == nullptr)
         return nullptr;
     if (target == nullptr) {
         std::cerr << "Cannot find nearest neighbor using nullptr target node." << "\n";
@@ -169,20 +169,20 @@ Node * KDTree::nearestNeighborRecursive(Node* top, Node* target, unsigned int de
     Node* nearBranch;
     Node* farBranch;
 
-    if (target->position[dimension] < top->position[dimension]) {
-        nearBranch = top->left;
-        farBranch  = top->right;
+    if (target->position[dimension] < curr->position[dimension]) {
+        nearBranch = curr->left;
+        farBranch  = curr->right;
     }
     else {
-        nearBranch = top->right;
-        farBranch  = top->left;
+        nearBranch = curr->right;
+        farBranch  = curr->left;
     }
 
     Node* nearNode = nearestNeighborRecursive(nearBranch, target, depth + 1);  // Find closest node in rest of KDTree
 
-    // Get all candidates (top and nearNode) and figure out which one is closest
+    // Get all candidates (curr and nearNode) and figure out which one is closest
     std::vector<Node*> candidates;
-    candidates.push_back(top);
+    candidates.push_back(curr);
     if (nearNode != nullptr) candidates.push_back(nearNode);
 
     Node* closestNode = closest(target, candidates);
@@ -192,10 +192,10 @@ Node * KDTree::nearestNeighborRecursive(Node* top, Node* target, unsigned int de
 
     // Compare the distance between target and closest node to its normal
     float distance = Calculator::calcDistance(target, closestNode);
-    float distanceNormal = std::abs(target->position[dimension] - top->position[dimension]);
+    float distanceToPlane = std::abs(target->position[dimension] - curr->position[dimension]);
 
     // Check farBranch to see if it has a node closer than closestNode (on nearBranch)
-    if (distance >= distanceNormal) {
+    if (distance >= distanceToPlane) {
         Node* farNode = nearestNeighborRecursive(farBranch, target, depth + 1);
 
         candidates.pop_back();              // candidates = {closestNode}
