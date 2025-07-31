@@ -1,8 +1,10 @@
 #pragma once
 
 #include <map>
+#include <queue>
 #include <vector>
 
+#include "Neighbor.h"
 #include "Node.h"
 #include "Star.h"
 
@@ -74,6 +76,9 @@ public:
     void print();
 
     Node* nearestNeighborRecursive(Node* top, Node* target, unsigned int depth);  // Helper function
-    Node* nearestNeighbor(Node* target);
+    Node* nearestNeighbor(Node* target);  // Returns closest neighbor
+
+    Node *knnRecursive(Node *top, Node *target, unsigned int depth, std::priority_queue<Neighbor> &heap, unsigned int &numNodes);
+    std::vector<Node*> knn(Node *target, unsigned int &numNodes);  // Returns K number of closest nodes
 };
 

@@ -7,6 +7,7 @@
 #include "Node.h"
 #include "Calculator.h"
 #include "KDTree.h"
+#include "Neighbor.h"
 
 
 Node* KDTree::insertRecursive(Node* currNode, Node& insertNode, unsigned int depth) {
@@ -212,4 +213,72 @@ Node * KDTree::nearestNeighborRecursive(Node* top, Node* target, unsigned int de
 
 Node* KDTree::nearestNeighbor(Node* target) {
     return nearestNeighborRecursive(root, target, 0);
+}
+
+Node* KDTree::knnRecursive(Node* curr, Node* target, unsigned int depth,
+                            std::priority_queue<Neighbor>& heap, unsigned int& numNodes) {
+    // Finds the K closest nodes to target
+
+    if (curr == nullptr)
+        return nullptr;
+    if (target == nullptr) {
+        std::cerr << "KDTree::knnRecursive(): Cannot find nearest neighbor using nullptr target node." << "\n";
+        return nullptr;
+    }
+
+    unsigned int dimension = depth % K;
+
+    // Pick which node to traverse in KDTree
+    Node* nearBranch;
+    Node* farBranch;
+
+    if (target->position[dimension] < curr->position[dimension]) {
+        nearBranch = curr->left;
+        farBranch  = curr->right;
+    }
+    else {
+        nearBranch = curr->right;
+        farBranch  = curr->left;
+    }
+
+    // Calculate distance for nodes in near branch
+    knnRecursive(nearBranch, target, depth + 1, heap, numNodes);
+
+    Neighbor currNeighbor(target, curr);
+
+    if (heap.size() < numNodes) {
+        // Push closestNode and curr if there's enough room in heap
+        heap.push(currNeighbor);
+    }
+    else if (currNeighbor.distance < heap.top().distance) {
+        // If max heap is full but distance is less than maximum in max-heap
+        heap.pop();
+        heap.push(currNeighbor);
+    }
+
+    // Check to see if plane is closer to target than curr
+    float distanceToPlane = std::abs(target->position[dimension] - curr->position[dimension]);
+
+    // Check farBranch
+    if (heap.size() < numNodes || distanceToPlane < heap.top().distance) {
+        knnRecursive(farBranch, target, depth + 1, heap, numNodes);
+    }
+
+    return curr;
+}
+
+std::vector<Node*> KDTree::knn(Node* target, unsigned int& numNodes) {
+    std::priority_queue<Neighbor> heap;
+    knnRecursive(root, target, 0, heap, numNodes);
+
+    std::vector<Node*> result;
+    while (!heap.empty()) {
+        result.push_back(heap.top().node);
+        heap.pop();
+    }
+
+    // Reverse `result` so that it is in ascending order (shortest to longest distance)
+    std::reverse(result.begin(), result.end());
+
+    return result;
 }
