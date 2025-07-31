@@ -13,13 +13,7 @@ struct Neighbor {
         target = nullptr;
     }
 
-    Neighbor(Node* target, Node* node) {
-        this->target = target;
-        this->node = node;
-        distance = 0;
-    }
-
-    float calcDistance();
+    Neighbor(Node* target, Node* node);
 
     // Comparison for max-heap
     bool operator<(const Neighbor& other) const {
