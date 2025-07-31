@@ -59,6 +59,69 @@ void nearestNeighborTest2() {
     nearestNeighborTest(positions, targetPosition);
 }
 
+void knnTest(std::vector<std::vector<float>>& positions, std::vector<float>& targetPosition, unsigned int KNeighbors) {
+    std::vector<Node> nodes;
+
+    for (int i = 0; i < positions.size(); ++i) {
+        Node node(i, positions[i]);
+        nodes.push_back(node);
+    }
+
+    const unsigned int dimensions = targetPosition.size();
+    KDTree tree(dimensions);
+    tree.insertNodes(nodes);
+
+    Node target(targetPosition);
+
+    std::vector<Node*> result = tree.knn(&target, KNeighbors);
+
+    std::cout << "KNN Nodes for " << "(";
+
+    // Print targetPosition
+    for (int i = 0; i < targetPosition.size() - 1; ++i) {
+        std::cout << targetPosition[i] << ", ";
+    }
+    std::cout << targetPosition[targetPosition.size() - 1] << "):" << "\n";
+
+    for (Node* node : result) {
+        node->print("\t");
+    }
+}
+
+void knnTest1() {
+    std::vector<std::vector<float>> positions = {
+        {3, 1},
+        {8, 7},
+        {10, 2},
+        {5, 4},
+        {2, 6},
+        {13, 3}
+    };
+    std::vector<float> targetPosition = {9, 4};
+    unsigned int KNeighbors = 3;
+
+    knnTest(positions, targetPosition, KNeighbors);
+}
+
+void knnTest2() {
+    std::vector<std::vector<float>> positions = {
+        {2.0f, 3.0f},
+        {5.5f, 4.2f},
+        {9.0f, 6.8f},
+        {4.2f, 7.7f},
+        {8.1f, 1.3f},
+        {7.4f, 2.2f},
+        {4, 2},
+        {1.0f, 9.1f},
+        {6.5f, 8.8f},
+        {2.2f, 4.4f}
+    };
+    std::vector<float> targetPosition = {7, 2};
+    unsigned int KNeighbors = 4;
+
+    knnTest(positions, targetPosition, KNeighbors);
+}
+
 void printKDTreeTest() {
     std::string galaxyFile = "../data/hygdata_cleaned.csv";
     Galaxy galaxy;
@@ -75,8 +138,8 @@ void printKDTreeTest() {
 }
 
 int main() {
-    nearestNeighborTest1();
-    nearestNeighborTest2();
+    knnTest1();
+    knnTest2();
 
     return 0;
 }
