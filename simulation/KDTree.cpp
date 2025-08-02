@@ -264,18 +264,18 @@ Node* KDTree::knnRecursive(Node* curr, Node* target, unsigned int depth,
     return curr;
 }
 
-std::vector<Node*> KDTree::knn(Node* target, unsigned int& numNodes) {
+std::vector<Neighbor> KDTree::knn(Node* target, unsigned int& numNodes) {
     std::priority_queue<Neighbor> heap;
     knnRecursive(root, target, 0, heap, numNodes);
 
-    std::vector<Node*> result;
+    std::vector<Neighbor> result;
     while (!heap.empty()) {
-        result.push_back(heap.top().node);
+        result.push_back(heap.top());
         heap.pop();
     }
 
     // Reverse `result` so that it is in ascending order (shortest to longest distance)
-    std::reverse(result.begin(), result.end());
+    //std::reverse(result.begin(), result.end());
 
     return result;
 }
