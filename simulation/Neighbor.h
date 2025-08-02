@@ -3,6 +3,14 @@
 #include "Node.h"
 
 struct Neighbor {
+    /*  The `Neighbor` class stores two nodes:
+     *
+     *  - `Neighbor.target` : the reference node
+     *  - `Neighbor.node` : the neighbor of `Neighbor.target`
+     *
+     *  It also stores the distance between `Neighbor.target` and `Neighbor.node` as `Neighbor.distance`.
+     */
+
     float distance;
     Node* node;
     Node* target;
