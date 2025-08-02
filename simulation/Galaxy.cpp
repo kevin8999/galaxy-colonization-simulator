@@ -36,7 +36,8 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
 
         // Define star based on values in the row
         Star star;
-        star.id = std::stoi(row[1]);
+        unsigned long id = std::stoul(row[1]);
+        star.id = static_cast<unsigned int>(id); // ID in data starts at 1
         star.position = {
             // Convert each value to float and store as position star.position
             std::stof(row[8]),  // x
@@ -47,6 +48,11 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
 
         stars.push_back(star);
     }
+    // Force stars to have the same capacity as its size
+    stars.shrink_to_fit();
+
+    unsigned int dimensions = stars[0].position.size();
+    tree.setDimensions(dimensions);
 
     bool printSize = false;
 
