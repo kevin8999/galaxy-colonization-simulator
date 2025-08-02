@@ -47,6 +47,12 @@ private:
     unsigned int maxDepth;
 
 public:
+    KDTree() {
+        numNodes = 0;
+        maxDepth = 0;
+        root = nullptr;
+    }
+
     KDTree(const unsigned int& dimensions) {
         this->K = dimensions;  // K dimensions
         numNodes = 0;
@@ -60,6 +66,7 @@ public:
 
     Node* root;
 
+    void setDimensions(unsigned int& dim);
 
     Node* insertRecursive(Node* currNode, Node& insertNode, unsigned int depth);
     Node* insert(Node insertNode);

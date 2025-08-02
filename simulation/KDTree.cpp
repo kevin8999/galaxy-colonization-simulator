@@ -9,6 +9,10 @@
 #include "Neighbor.h"
 
 
+void KDTree::setDimensions(unsigned int &dim) {
+    this->K = dim;
+}
+
 Node* KDTree::insertRecursive(Node* currNode, Node& insertNode, unsigned int depth) {
     if (currNode == nullptr)
         return new Node(insertNode.id, insertNode.position);
