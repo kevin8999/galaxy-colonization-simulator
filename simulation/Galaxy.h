@@ -11,7 +11,7 @@
 class Galaxy {
 private:
     std::vector<Star> stars;
-    std::unordered_map<int, Star> starID;
+    unsigned int dimensions;
     std::set<unsigned int> visited;
 
     // Stores distances between Star A and Star B
