@@ -62,7 +62,7 @@ void nearestNeighborTest2() {
 void knnTest(std::vector<std::vector<float>>& positions, std::vector<float>& targetPosition, unsigned int KNeighbors) {
     std::vector<Node> nodes;
 
-    for (int i = 0; i < positions.size(); ++i) {
+    for (unsigned int i = 0; i < positions.size(); ++i) {
         Node node(i, positions[i]);
         nodes.push_back(node);
     }
@@ -71,9 +71,9 @@ void knnTest(std::vector<std::vector<float>>& positions, std::vector<float>& tar
     KDTree tree(dimensions);
     tree.insertNodes(nodes);
 
-    Node target(targetPosition);
+    Node* target = new Node(targetPosition);
 
-    std::vector<Node*> result = tree.knn(&target, KNeighbors);
+    std::vector<Neighbor> result = tree.knn(target, KNeighbors);
 
     std::cout << "KNN Nodes for " << "(";
 
@@ -83,9 +83,10 @@ void knnTest(std::vector<std::vector<float>>& positions, std::vector<float>& tar
     }
     std::cout << targetPosition[targetPosition.size() - 1] << "):" << "\n";
 
-    for (Node* node : result) {
-        node->print("\t");
+    for (Neighbor& neighbor : result) {
+        neighbor.node->print("\t");
     }
+    delete target;
 }
 
 void knnTest1() {
