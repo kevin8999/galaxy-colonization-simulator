@@ -138,9 +138,23 @@ void printKDTreeTest() {
     tree.print(max);
 }
 
+void getClosestStarsTest() {
+    std::string galaxyFile = "../data/hygdata_cleaned.csv";
+    Galaxy galaxy;
+    galaxy.load(galaxyFile);
+
+    unsigned int dimensions = 3;
+    KDTree tree(dimensions);
+
+    galaxy.insertTree();
+
+    unsigned int numClosest = 3;
+    galaxy.getClosestStars(0, numClosest);
+    galaxy.printClosest(0);
+}
+
 int main() {
-    knnTest1();
-    knnTest2();
+    getClosestStarsTest();
 
     return 0;
 }
