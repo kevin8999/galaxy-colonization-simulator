@@ -95,7 +95,7 @@ void Galaxy::getClosestStars(const unsigned int& target, unsigned int& numCloses
     // Store nearest neighbors in hash map
     for (Neighbor& neighbor : closestNodes) {
         if (neighbor.node->id == target) continue;
-        distances[target].emplace_back(neighbor.node->id, neighbor.distance);
+        neighbors[target].push_back(neighbor);
         visited.insert(neighbor.node->id);
     }
 }
@@ -109,11 +109,11 @@ void Galaxy::printClosest(const unsigned int &id) {
     // Prints closest stars for a given ID.
     // For this function to work, the star must have been visited and the closest stars must have been found already
 
-    std::vector<std::pair<unsigned int, float>>& target = distances[id];
+    std::vector<Neighbor>& target = neighbors[id];
 
     std::cout << "Target: " << id << std::endl;
-    for (const std::pair<unsigned int, float> node : target) {
-        std::cout << "\tNeighbor: " << node.first << std::endl;
-        std::cout << "\tDistance: " << node.second << std::endl;
+    for (const Neighbor neighbor : target) {
+        std::cout << "\tNeighbor: " << neighbor.node->id << std::endl;
+        std::cout << "\tDistance: " << neighbor.distance << std::endl;
     }
 }

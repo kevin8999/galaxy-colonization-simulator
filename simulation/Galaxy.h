@@ -14,8 +14,9 @@ private:
     unsigned int dimensions;
     std::set<unsigned int> visited;
 
-    // Stores distances between Star A and Star B
-    std::unordered_map<unsigned int, std::vector<std::pair<unsigned int, float>> > distances;
+    // Stores closest neighbors for a star
+    std::unordered_map<unsigned int, std::vector<Neighbor> > neighbors;
+    unsigned int numClosestToSearch = 20;
 
     KDTree tree;
 
@@ -32,7 +33,7 @@ public:
     void printClosest(const unsigned int &id);
 
     ~Galaxy() {
-        distances = {};
+        neighbors = {};
         stars = {};
     }
 };
