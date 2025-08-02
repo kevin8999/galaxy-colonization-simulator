@@ -106,6 +106,9 @@ void Galaxy::insertTree() {
 }
 
 void Galaxy::printClosest(const unsigned int &id) {
+    // Prints closest stars for a given ID.
+    // For this function to work, the star must have been visited and the closest stars must have been found already
+
     std::vector<std::pair<unsigned int, float>>& target = distances[id];
 
     std::cout << "Target: " << id << std::endl;
