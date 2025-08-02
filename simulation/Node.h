@@ -42,6 +42,14 @@ public:
         right = nullptr;
     }
 
+    Node(const Star* star) {
+        this->id = star->id;
+        this->position = star->position;
+
+        left = nullptr;
+        right = nullptr;
+    }
+
     Node operator=(const Node& other) {
         if (this != &other) {
             position = other.position;
