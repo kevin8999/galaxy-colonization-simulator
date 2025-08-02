@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Star.h"
+#include "KDTree.h"
 
 #include <string>
 #include <unordered_map>
@@ -13,6 +14,8 @@ private:
 
     // Stores distances between Star A and Star B
     std::unordered_map<int, std::pair<int, float>> distances;
+
+    KDTree tree;
 
 public:
     Galaxy() = default;
