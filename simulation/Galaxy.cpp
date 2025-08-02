@@ -62,9 +62,6 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
     return stars;
 }
 
-void Galaxy::findClosestStars() {
-}
-
 void Galaxy::print(unsigned int max) const {
     if (max > stars.size())
         max = stars.size();
