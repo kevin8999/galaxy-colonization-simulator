@@ -199,7 +199,11 @@ Node * KDTree::nearestNeighborRecursive(Node* curr, Node* target, unsigned int d
 
             closestNode = closest(target, candidates);
         }
+        delete farNode;
     }
+
+    for (Node* candidate : candidates)
+        delete candidate;
 
     return closestNode;
 }
