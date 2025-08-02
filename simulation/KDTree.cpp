@@ -4,7 +4,6 @@
 #include <set>
 #include <bits/stdc++.h>
 
-#include "Node.h"
 #include "Calculator.h"
 #include "KDTree.h"
 #include "Neighbor.h"
@@ -53,17 +52,13 @@ bool KDTree::searchRecursive(Node* currNode, Node* searchNode, unsigned int dept
     }
 }
 
-
-
 bool KDTree::search(Node* searchNode) {
     // Return true if successfully found, otherwise, return false
     return searchRecursive(root, searchNode, 0);
 }
 
-
 void KDTree::insertStars(std::vector<Star>& stars) {
     // Insert stars into KD tree
-
     for (int i = 0; i < stars.size(); ++i) {
         Node node(stars[i]);
         insert(node);
@@ -72,7 +67,6 @@ void KDTree::insertStars(std::vector<Star>& stars) {
 
 void KDTree::insertNodes(std::vector<Node>& nodes) {
     // Insert nodes into KD tree
-
     for (const Node& node : nodes) {
         insert(node);
     }
@@ -187,9 +181,6 @@ Node * KDTree::nearestNeighborRecursive(Node* curr, Node* target, unsigned int d
 
     Node* closestNode = closest(target, candidates);
 
-    //std::cout << "Closest Node (with nearNode):" << "\n";
-    //closestNode->print();
-
     // Compare the distance between target and closest node to its normal
     float distance = Calculator::calcDistance(target, closestNode);
     float distanceToPlane = std::abs(target->position[dimension] - curr->position[dimension]);
@@ -203,8 +194,6 @@ Node * KDTree::nearestNeighborRecursive(Node* curr, Node* target, unsigned int d
             candidates.push_back(farNode);  // candidates = {closestNode, farNode}
 
             closestNode = closest(target, candidates);
-            //std::cout << "Closest Node (with farNode):" << "\n";
-            //closestNode->print();
         }
     }
 
