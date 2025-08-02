@@ -5,12 +5,14 @@
 
 #include <string>
 #include <unordered_map>
+#include <set>
 
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
 private:
     std::vector<Star> stars;
     std::unordered_map<int, Star> starID;
+    std::set<unsigned int> visited;
 
     // Stores distances between Star A and Star B
     std::unordered_map<int, std::pair<int, float>> distances;
