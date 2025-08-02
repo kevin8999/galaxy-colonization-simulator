@@ -62,7 +62,7 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
     return stars;
 }
 
-void Galaxy::print(unsigned int max) const {
+void Galaxy::print(int max) const {
     if (max > stars.size())
         max = stars.size();
 

@@ -17,11 +17,8 @@ private:
 public:
     Galaxy() = default;
 
-    std::vector<Star> load(const std::string& galaxyFile);  // Loads star positions based on file configuration of galaxy as specified in `file`
-
-    void findClosestStars();  // Tells each star in the galaxy to find its closest neighbors
-
-    void print(unsigned int max = 50) const; // Prints data in stars
+    std::vector<Star> load(const std::string& galaxyFile);
+    void print(int max = 50) const;
 
     std::vector<Star> getStars();
 
