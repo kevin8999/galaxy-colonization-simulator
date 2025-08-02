@@ -40,6 +40,9 @@
  *          Continue this process (comparing dimensions) while cycling through dimensions (1, 2, 3, 1, 2, 3, ...)
  */
 
+struct Star;
+class Node;
+
 class KDTree {
 private:
     unsigned int dimensions;
