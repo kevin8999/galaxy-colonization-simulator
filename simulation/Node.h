@@ -89,11 +89,6 @@ public:
 
     void print(std::string beginChar) const {
         // Prints contents of Node object with a beginning character
-        if (this == nullptr) {
-            std::cerr << "Node::print() : Node is nullptr" << "\n";
-            return;
-        }
-
         std::cout << beginChar << "ID: " << this->id << "\n";
         std::cout << beginChar << "Position: " << "(";
 
