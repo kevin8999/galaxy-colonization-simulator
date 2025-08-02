@@ -102,6 +102,94 @@ Note that the above formula can be combined into one fraction to get:
 $$\boxed{a = \frac{2 \cdot P_\text{star} \cdot A_\text{sail}}{cm \cdot 4\pi r^2}}$$
 
 
+## Minimum Time to Travel Between Stars
+Knowns:
+
+- Launch at time $t_0 = 0$.
+- $v_\text{max}$ can be calculated
+- $a_0$ (acceleration from the original star) and $a_1$ (deceleration at the destination star) are known
+- $v_2 = 0$
+- $v_1 = 0$
+- Position of $\mathbf{A}$ and $\mathbf{B}$.
+
+### Why We Don't Need to Factor in Acceleration for Travel Time
+
+From the [Acceleration](#acceleration) section, we know that acceleration $a$ can be found using:
+
+$$a = \frac{2 \cdot P_\text{star} \cdot A_\text{sail}}{cm \cdot 4\pi r^2}$$
+
+The only variable that changes is $r$. Thus, $a$ varies inversely with the square of the distance $r$. That is,
+
+$$
+a \propto \frac{1}{r^2}.
+$$
+
+To find the total amount of acceleration experienced between two points $a$ and $b$, we integrate $\dfrac{1}{r^2}$ over the interval $[a, b]$:
+
+$$
+\begin{aligned}
+\int_a^b \frac{1}{r^2} \, dr &= \int_a^b r^{-2} \, dr \\
+&= -1 \cdot r^{-1} \Bigg|_{a}^{b} \\
+&= \left(-\frac{1}{r}\right) \Bigg|_a^b \\
+&= \left(-\frac{1}{b}\right) - \left(-\frac{1}{a}\right) \\
+&= - \frac{1}{b} + \frac{1}{a} \\\\
+&\boxed{= \frac{1}{a} - \frac{1}{b}}.
+\end{aligned}
+$$
+
+Note that constants are removed as we are only interested in how total acceleration accumulates.
+
+Now, if we let $b$ be a constant multiple of $a$, and set $a = 1$, then
+
+$$
+\int_1^b \frac{1}{r^2} \, dr = 1 - \frac{1}{b}.
+$$
+
+Here, $b$ represents a distance greater than $a$ by some constant factor.
+
+This equation tells us that the majority of the acceleration happens at very small distances. Additionally, the further you move away from a star, the faster acceleration will decrease.
+
+Many planets are close to their stars, so calculating the acceleration part is negligible and only adds unnecessary computational resources to our simulation.
 
 
+
+### Calculating Trajectory from Star A to Star B
+
+This section goes over how to calculate the trajectory between star $A$ and a moving target star $B$.
+
+- Objects in circular motion require centripetal acceleration.
+
+#todo: calculate path between two paths between Star A and B
+
+- https://openstax.org/books/physics/pages/6-2-uniform-circular-motion
+- Desmos visualization: https://www.desmos.com/calculator/ywye0tnu9e
+
+Let star $A$ be defined as
+
+$$A = (r_1 , \theta_1 , \omega_1)$$
+
+where
+
+- $r_1$ is the distance between $A$ and the centre
+- $\theta_1$ is the current angle that $A$ is at (relative to the positive $x$ axis)
+- $\omega_1$ is the angular velocity of $A$
+
+Let star $B$ be similarly defined as
+
+$$B = (r_2 , \theta_2 , \omega_2)$$
+
+- $r_2$ is the distance between $B$ and the centre
+- $\theta_2$ is the current angle that $B$ is at (relative to the positive $x$ axis)
+- $\omega_2$ is the angular velocity of $B$
+
+We can define parametric equations for star $A$ and $B$ to map their polar coordinates at time $t$ to an Cartesian coordinate.
+
+$$f(r, \theta, \omega, t) = \begin{bmatrix} r_{i}\cos\left(\theta_{i}+w_{i}\cdot t\right) \\ r_{i}\sin\left(\theta_{i}+w_{i}\cdot t\right) \end{bmatrix}$$
+
+which can be converted to
+
+$$\begin{align}
+x_i &= r_{i}\cos\left(\theta_{i}+w_{i}\cdot t\right) \\
+y_i &= r_{i}\sin\left(\theta_{i}+w_{i}\cdot t\right)
+\end{align}$$
 
