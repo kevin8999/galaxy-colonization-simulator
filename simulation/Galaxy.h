@@ -27,6 +27,10 @@ public:
 
     std::vector<Star> getStars();
 
+    void getClosestStars(const unsigned int &target, unsigned int &numClosest);  // Gets closest stars for target
+    void insertTree();
+    void printClosest(const unsigned int &id);
+
     ~Galaxy() {
         distances = {};
         stars = {};

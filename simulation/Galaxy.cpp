@@ -1,4 +1,7 @@
 #include "Galaxy.h"
+#include "KDTree.h"
+#include "Node.h"
+#include "Neighbor.h"
 
 #include <fstream>
 #include <iostream>
@@ -73,4 +76,41 @@ void Galaxy::print(int max) const {
 
 std::vector<Star> Galaxy::getStars() {
     return stars;
+}
+
+void Galaxy::getClosestStars(const unsigned int& target, unsigned int& numClosest) {
+    if (target > stars.size()) {
+        std::cerr << "Error: target is greater than stars.size()" << "\n";
+        std::cout << "\t Target: " << target << std::endl;
+        std::cout << "\t stars.size(): " << stars.size() << std::endl;
+        return;
+    }
+
+    const Star* targetStar = &stars[target];
+    Node targetNode(targetStar);
+
+    // Find K Nearest Neighbors
+    std::vector<Neighbor> closestNodes = tree.knn(&targetNode, ++numClosest);
+
+    // Store nearest neighbors in hash map
+    for (Neighbor& neighbor : closestNodes) {
+        if (neighbor.node->id == target) continue;
+        distances[target].emplace_back(neighbor.node->id, neighbor.distance);
+        visited.insert(neighbor.node->id);
+    }
+}
+
+void Galaxy::insertTree() {
+    // Insert stars into tree
+    tree.insertStars(stars);
+}
+
+void Galaxy::printClosest(const unsigned int &id) {
+    std::vector<std::pair<unsigned int, float>>& target = distances[id];
+
+    std::cout << "Target: " << id << std::endl;
+    for (const std::pair<unsigned int, float> node : target) {
+        std::cout << "\tNeighbor: " << node.first << std::endl;
+        std::cout << "\tDistance: " << node.second << std::endl;
+    }
 }
