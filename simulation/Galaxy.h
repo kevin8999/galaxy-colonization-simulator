@@ -15,7 +15,7 @@ private:
     std::set<unsigned int> visited;
 
     // Stores distances between Star A and Star B
-    std::unordered_map<int, std::pair<int, float>> distances;
+    std::unordered_map<unsigned int, std::vector<std::pair<unsigned int, float>> > distances;
 
     KDTree tree;
 
