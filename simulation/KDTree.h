@@ -42,7 +42,7 @@
 
 class KDTree {
 private:
-    unsigned int K;
+    unsigned int dimensions;
     unsigned int numNodes;
     unsigned int maxDepth;
 
@@ -54,7 +54,7 @@ public:
     }
 
     KDTree(const unsigned int& dimensions) {
-        this->K = dimensions;  // K dimensions
+        this->dimensions = dimensions;  // K dimensions
         numNodes = 0;
         maxDepth = 0;
         root = nullptr;

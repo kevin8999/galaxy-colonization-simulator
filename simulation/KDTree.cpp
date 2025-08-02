@@ -10,14 +10,14 @@
 
 
 void KDTree::setDimensions(unsigned int &dim) {
-    this->K = dim;
+    this->dimensions = dim;
 }
 
 Node* KDTree::insertRecursive(Node* currNode, Node& insertNode, unsigned int depth) {
     if (currNode == nullptr)
         return new Node(insertNode.id, insertNode.position);
 
-    unsigned int currDimension = depth % K;
+    unsigned int currDimension = depth % this->dimensions;
 
     if (insertNode.position[currDimension] < currNode->position[currDimension]) {
         currNode->left = insertRecursive(currNode->left, insertNode, depth + 1);
@@ -47,7 +47,7 @@ bool KDTree::searchRecursive(Node* currNode, Node* searchNode, unsigned int dept
         return true;
 
     // Otherwise, search in next subtree
-    unsigned int currDimension = depth % K;
+    unsigned int currDimension = depth % this->dimensions;
     if (currNode->position[currDimension] < searchNode->position[currDimension]) {
         return searchRecursive(currNode->left, searchNode, depth + 1);
     }
@@ -161,7 +161,7 @@ Node * KDTree::nearestNeighborRecursive(Node* curr, Node* target, unsigned int d
         return nullptr;
     }
 
-    unsigned int dimension = depth % K;
+    unsigned int dimension = depth % this->dimensions;
 
     // Pick which node to traverse in KDTree
     Node* nearBranch;
@@ -219,7 +219,7 @@ Node* KDTree::knnRecursive(Node* curr, Node* target, unsigned int depth,
         return nullptr;
     }
 
-    unsigned int dimension = depth % K;
+    unsigned int dimension = depth % this->dimensions;
 
     // Pick which node to traverse in KDTree
     Node* nearBranch;
