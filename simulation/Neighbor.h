@@ -27,6 +27,15 @@ struct Neighbor {
     bool operator<(const Neighbor& other) const {
         return distance < other.distance;
     }
+
+    // Comparison for min-heap
+    bool operator>(const Neighbor& other) const {
+        return distance > other.distance;
+    }
+
+    bool operator==(const Neighbor& other) const {
+        return distance == other.distance;
+    }
 };
 
 struct NeighborCompare {
