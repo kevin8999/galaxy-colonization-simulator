@@ -44,6 +44,9 @@ public:
     void insertTree();
     void printClosest(const unsigned int &id);
 
+    void start(unsigned int id);
+    void update();
+
     ~Galaxy() {
         neighbors = {};
         stars = {};
