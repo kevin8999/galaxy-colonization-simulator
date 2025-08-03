@@ -29,7 +29,7 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
         }
 
         /*
-         * Columns to extract from the CSV:
+         *  Columns to extract from the CSV:
          *       1  → ID
          *       8  → x-position
          *       9  → y-position
