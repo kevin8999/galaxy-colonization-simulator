@@ -79,6 +79,8 @@ std::vector<Star> Galaxy::getStars() {
 }
 
 void Galaxy::getClosestStars(const unsigned int& target, unsigned int& numClosest) {
+    // Get closest stars to target
+
     if (target > stars.size()) {
         std::cerr << "Error: target is greater than stars.size()" << "\n";
         std::cout << "\t Target: " << target << std::endl;
