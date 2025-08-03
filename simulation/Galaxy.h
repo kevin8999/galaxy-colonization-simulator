@@ -3,6 +3,7 @@
 #include "Star.h"
 #include "KDTree.h"
 #include "Spacecraft.h"
+#include "Clock.h"
 #include "Neighbor.h"
 
 #include <string>
@@ -24,6 +25,8 @@ private:
     unsigned int numClosestToSearch = 20;
 
     KDTree tree;
+
+    Clock clock = Clock(1.0f);
 
 public:
     Galaxy() = default;
