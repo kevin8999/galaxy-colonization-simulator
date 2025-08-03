@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 #include <set>
+#include <list>
 
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
@@ -13,6 +14,8 @@ private:
     std::vector<Star> stars;
     unsigned int dimensions;
     std::set<unsigned int> visited;
+
+    std::list<Spacecraft> ships;
 
     // Stores closest neighbors for a star
     std::unordered_map<unsigned int, std::vector<Neighbor> > neighbors;
