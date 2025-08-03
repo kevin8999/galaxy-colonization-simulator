@@ -41,6 +41,15 @@ struct Spacecraft {
     }
 
     float calcVelocity() {
+    Spacecraft(unsigned int& id, Star* origin, Star* destination, float& departureTime, float distance) {
+        this->id = id;
+        this->origin = origin;
+        this->destination = destination;
+
+        // Launch at departureTime
+        this->launch(departureTime, distance);
+    }
+
         // TODO: Calculate velocity given a star's luminosity
         return velocity;
     }
