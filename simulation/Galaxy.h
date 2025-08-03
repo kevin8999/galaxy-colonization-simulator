@@ -2,6 +2,8 @@
 
 #include "Star.h"
 #include "KDTree.h"
+#include "Spacecraft.h"
+#include "Neighbor.h"
 
 #include <string>
 #include <unordered_map>
