@@ -32,6 +32,10 @@ public:
     std::vector<Star> getStars();
 
     void getClosestStars(const unsigned int &target, unsigned int &numClosest);  // Gets closest stars for target
+    void visitClosest(unsigned int target);
+    void visit(Star* source, Star* destination, float &distance);
+    void visit(unsigned int source, unsigned int destination, float &distance);
+
     void insertTree();
     void printClosest(const unsigned int &id);
 

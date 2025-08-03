@@ -117,3 +117,36 @@ void Galaxy::printClosest(const unsigned int &id) {
         std::cout << "\tDistance: " << neighbor.distance << std::endl;
     }
 }
+
+void Galaxy::visit(Star* source, Star* destination, float& distance) {
+    // Creates a parametric equation to model a spacecraft travelling from source to destination
+
+    // If      source has not been visited        OR       destination has been visited
+    if (visited.find(source->id) == visited.end() || visited.find(destination->id) != visited.end())
+        return;
+
+    unsigned int id = ships.size();
+    float launchTime = clock.now();
+    Spacecraft ship(id, source, destination, launchTime, distance);
+    ships.push_back(ship);
+    visited.insert(destination->id);
+}
+
+void Galaxy::visit(unsigned int source, unsigned int destination, float& distance) {
+    Star* sourceStar = &stars[source];
+    Star* destinationStar = &stars[destination];
+    visit(sourceStar, destinationStar, distance);
+}
+
+void Galaxy::visitClosest(const unsigned int target) {
+    // Visits closest stars. `target` must already have a vector of closest stars to it
+    std::vector<Neighbor>& closest = neighbors[target];
+
+    for (const Neighbor neighbor : closest) {
+        unsigned int& destinationID = neighbor.node->id;
+        float distance = neighbor.distance;
+
+        visit(target, destinationID, distance);
+    }
+}
+
