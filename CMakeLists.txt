@@ -9,14 +9,24 @@ include_directories(simulation)
 add_library(simulationLib
         simulation/Calculator.cpp
         simulation/Calculator.h
+
         simulation/Galaxy.cpp
         simulation/Galaxy.h
+
         simulation/Star.cpp
         simulation/Star.h
+
         simulation/KDTree.cpp
         simulation/KDTree.h
+
         simulation/Neighbor.cpp
         simulation/Neighbor.h
+
+        simulation/Spacecraft.cpp
+        simulation/Spacecraft.h
+
+        simulation/Clock.cpp
+        simulation/Clock.h
 )
 
 add_executable(galaxy_generator simulation/main.cpp)
