@@ -8,8 +8,8 @@ const double SPEED_OF_LIGHT = 299'792'458;
 
 struct Spacecraft {
     unsigned int id;
-    Star* origin;
-    Star* destination;
+    Star* origin = nullptr;
+    Star* destination = nullptr;
 
     // Values                 // Units
     /************************************/
@@ -27,10 +27,8 @@ struct Spacecraft {
     bool enRoute = false;
 
     Spacecraft() {
-        origin = nullptr;
         enRoute = false;
         totalDistance = 0;
-
     }
 
     Spacecraft(unsigned int& id, Star* origin, Star* destination, float& departureTime) {
