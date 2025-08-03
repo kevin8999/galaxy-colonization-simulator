@@ -40,7 +40,6 @@ struct Spacecraft {
         this->launch(departureTime);
     }
 
-    float calcVelocity() {
     Spacecraft(unsigned int& id, Star* origin, Star* destination, float& departureTime, float distance) {
         this->id = id;
         this->origin = origin;
@@ -50,9 +49,7 @@ struct Spacecraft {
         this->launch(departureTime, distance);
     }
 
-        // TODO: Calculate velocity given a star's luminosity
-        return velocity;
-    }
+    // TODO: Calculate velocity given a star's luminosity
 
     void launch(const float& departTime) {
         departureTime = departTime;
