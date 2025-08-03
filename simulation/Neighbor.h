@@ -40,6 +40,11 @@ struct Neighbor {
 
 struct NeighborCompare {
     bool operator()(const Neighbor& a, const Neighbor& b) const {
+        if (a.target != b.target) {
+            const std::string ERROR = "NeighborCompare() : a.target does not match b.target. (" + std::to_string(a.target->id) + " != " + std::to_string(b.target->id) + ")";
+            throw std::runtime_error(ERROR);
+        }
+
         return a.distance < b.distance; // max-heap: Neighbor with larger distance is root
     }
 };
