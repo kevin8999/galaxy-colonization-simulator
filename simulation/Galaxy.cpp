@@ -167,7 +167,7 @@ void Galaxy::update() {
     clock.tick();
     double currentTime = clock.now();
 
-    for (auto it = ships.begin(); it != ships.end()) {
+    for (auto it = ships.begin(); it != ships.end(); ) {
         Spacecraft& ship = *it;
         ship.updatePosition(currentTime);
 
@@ -175,7 +175,11 @@ void Galaxy::update() {
             unsigned int& destinationID = ship.destination->id;
             colonizeFrom(destinationID);
 
+            // Delete current ship and get next ship
             it = ships.erase(it);
+        }
+        else {
+            ++it;
         }
     }
 }
