@@ -26,6 +26,24 @@ struct Spacecraft {
     // States if the Spacecraft object is currently heading to destination
     bool enRoute = false;
 
+    bool arrived = false;
+
+    std::vector<float> position;
+
+    /*  parametricEquation the direction of travel as a normalized vector for each spatial dimension.
+     *
+     *  Each element corresponds to the rate of change in one dimension (x, y, z, etc.),
+     *  scaled to ensure the ship moves with a length of velocity from the origin to the destination
+     *
+     *  For example, if the ship travels from origin A to destination B over time `t`, the
+     *  position in dimension i is updated using:
+     *
+     *     position[i] = origin->position[i] + parametricEquation[i] * (currentTime - departureTime);
+     *
+     *  This allows the ship’s position to be updated linearly over time along the correct path.
+     */
+    std::vector<float> parametricEquation;
+
     Spacecraft() {
         enRoute = false;
         totalDistance = 0;
