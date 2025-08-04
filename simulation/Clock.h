@@ -14,15 +14,9 @@ public:
         timeStep = stepSize;
     }
 
-    void tick() {
-        currentTime += timeStep;
-    }
+    // Move currentTime forward one timeStep
+    void tick();
 
-    float now() const {
-        return currentTime;
-    }
-
-    void reset() {
-        currentTime = 0.0f;
-    }
+    float now() const;
+    void reset();
 };
