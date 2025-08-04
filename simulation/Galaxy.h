@@ -42,7 +42,7 @@ public:
 
     bool paused  = true;
     bool started = false;
-    std::chrono::milliseconds delay = 250ms;
+    std::chrono::milliseconds delay = 750ms;
 
     Galaxy() = default;
 
