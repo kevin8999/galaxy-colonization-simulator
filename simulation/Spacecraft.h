@@ -44,7 +44,7 @@ struct Spacecraft {
      *
      *  This allows the ship’s position to be updated linearly over time along the correct path.
      */
-    std::vector<float> directionVector;
+    std::vector<double> directionVector;
 
     bool print = true;
 
@@ -62,7 +62,7 @@ struct Spacecraft {
         this->launch(departureTime);
     }
 
-    Spacecraft(unsigned int& id, Star* origin, Star* destination, float& departureTime, float distance) {
+    Spacecraft(unsigned int& id, Star* origin, Star* destination, float& departureTime, double distance) {
         this->id = id;
         this->origin = origin;
         this->destination = destination;
@@ -75,7 +75,7 @@ struct Spacecraft {
     // TODO: Calculate velocity given a star's luminosity
 
     void launch(const float& departTime);
-    void launch(const float& departTime, const float& distance);
+    void launch(const float& departTime, const double& distance);
 
     void getDirectionVector();
     void updatePosition(const double currentTime);

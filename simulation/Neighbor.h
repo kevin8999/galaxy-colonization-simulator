@@ -11,7 +11,7 @@ struct Neighbor {
      *  It also stores the distance between `Neighbor.target` and `Neighbor.node` as `Neighbor.distance`.
      */
 
-    float distance;
+    double distance;
     Node* node;
     Node* target;
 

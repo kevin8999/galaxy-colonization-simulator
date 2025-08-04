@@ -13,10 +13,10 @@ void Spacecraft::launch(const float &departTime) {
     enRoute = true;
 }
 
-void Spacecraft::launch(const float &departTime, const float &distance) {
+void Spacecraft::launch(const float &departTime, const double &distance) {
     departureTime = departTime;
 
-    totalDistance = distance * LIGHT_YEAR;
+    totalDistance = distance;
     this->travelTime = static_cast<float>(velocity / totalDistance);
     this->arrivalTime = departureTime + travelTime;
 

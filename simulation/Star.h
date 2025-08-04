@@ -4,7 +4,7 @@
 
 struct Star {
     // Stores (x, y, z) or (x, y) position of a star
-    std::vector<float> position;
+    std::vector<double> position;
 
     float solarLuminosity;
     unsigned int id;
@@ -12,7 +12,7 @@ struct Star {
 
     // FUNCTIONS
 
-    Star(std::vector<float>& inPos, float& inLum, unsigned int& inID) {
+    Star(std::vector<double>& inPos, float& inLum, unsigned int& inID) {
         position = inPos;
         solarLuminosity = inLum;
         id = inID;

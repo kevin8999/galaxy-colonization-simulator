@@ -8,7 +8,7 @@
 class Node {
 public:
     unsigned int id;
-    std::vector<float> position;
+    std::vector<double> position;
     Node* left;
     Node* right;
 
@@ -18,7 +18,7 @@ public:
         right = nullptr;
     };
 
-    Node(const unsigned int& id, const std::vector<float>& position) {
+    Node(const unsigned int& id, const std::vector<double>& position) {
         this->id = id;
         this->position = position;
 
@@ -26,7 +26,7 @@ public:
         right = nullptr;
     }
 
-    Node(const std::vector<float>& position) {
+    Node(const std::vector<double>& position) {
         this->id = 0;
         this->position = position;
 

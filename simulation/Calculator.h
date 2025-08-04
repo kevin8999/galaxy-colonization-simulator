@@ -6,7 +6,7 @@ class Calculator {
 
 public:
     // Calculates distance between star 1 and star 2
-    static float calcDistance(Star& s1, Star& s2);
-    static float calcDistance(Star *s1, Star *s2);
-    static float calcDistance(Node* n1, Node* n2);
+    static double calcDistance(Star& s1, Star& s2);
+    static double calcDistance(Star *s1, Star *s2);
+    static double calcDistance(Node* n1, Node* n2);
 };

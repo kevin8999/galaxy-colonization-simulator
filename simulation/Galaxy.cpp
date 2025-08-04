@@ -121,7 +121,7 @@ void Galaxy::printClosest(const unsigned int &id) {
     }
 }
 
-void Galaxy::visit(Star* source, Star* destination, float& distance) {
+void Galaxy::visit(Star* source, Star* destination, double& distance) {
     // Creates a parametric equation to model a spacecraft travelling from source to destination
 
     // If      source has not been visited        OR       destination has been visited
@@ -135,7 +135,7 @@ void Galaxy::visit(Star* source, Star* destination, float& distance) {
     visited.insert(destination->id);
 }
 
-void Galaxy::visit(unsigned int source, unsigned int destination, float& distance) {
+void Galaxy::visit(unsigned int source, unsigned int destination, double& distance) {
     Star* sourceStar = &stars[source];
     Star* destinationStar = &stars[destination];
     visit(sourceStar, destinationStar, distance);
@@ -147,7 +147,7 @@ void Galaxy::visitClosest(const unsigned int target) {
 
     for (const Neighbor neighbor : closest) {
         unsigned int& destinationID = neighbor.node->id;
-        float distance = neighbor.distance;
+        double distance = neighbor.distance;
 
         visit(target, destinationID, distance);
     }

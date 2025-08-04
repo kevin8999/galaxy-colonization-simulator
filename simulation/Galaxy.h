@@ -51,8 +51,8 @@ public:
 
     void getClosestStars(const unsigned int &target, unsigned int &numClosest);  // Gets closest stars for target
     void visitClosest(unsigned int target);
-    void visit(Star* source, Star* destination, float &distance);
-    void visit(unsigned int source, unsigned int destination, float &distance);
+    void visit(Star* source, Star* destination, double &distance);
+    void visit(unsigned int source, unsigned int destination, double &distance);
 
     void insertIntoKDTree();
     void printClosest(const unsigned int &id);
