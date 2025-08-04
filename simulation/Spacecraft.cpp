@@ -7,7 +7,7 @@ void Spacecraft::launch(const float &departTime) {
     departureTime = departTime;
 
     totalDistance = Calculator::calcDistance(origin, destination);
-    this->travelTime = velocity / totalDistance;
+    this->travelTime = totalDistance / velocity;
     this->arrivalTime = departureTime + travelTime;
 
     enRoute = true;
@@ -17,11 +17,12 @@ void Spacecraft::launch(const float &departTime, const double &distance) {
     departureTime = departTime;
 
     totalDistance = distance;
-    this->travelTime = static_cast<float>(velocity / totalDistance);
+    this->travelTime = static_cast<float>(totalDistance / velocity);
     this->arrivalTime = departureTime + travelTime;
 
     enRoute = true;
 }
+
 void Spacecraft::getDirectionVector() {
     // Computes the normalized direction vector from origin to destination.
     // This unit vector indicates the direction of motion for each dimension and the distance that `Spacecraft` travels
