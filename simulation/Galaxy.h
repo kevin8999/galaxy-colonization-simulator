@@ -27,7 +27,7 @@ private:
 
     KDTree tree;
 
-    Clock clock = Clock(1.0f);
+    Clock clock = Clock(10'000.0f);
 
 public:
     Galaxy() = default;

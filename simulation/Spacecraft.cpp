@@ -7,7 +7,7 @@ void Spacecraft::launch(const float &departTime) {
     departureTime = departTime;
 
     totalDistance = Calculator::calcDistance(origin, destination);
-    this->travelTime = static_cast<float>(velocity / totalDistance);
+    this->travelTime = velocity / totalDistance;
     this->arrivalTime = departureTime + travelTime;
 
     enRoute = true;
@@ -16,7 +16,7 @@ void Spacecraft::launch(const float &departTime) {
 void Spacecraft::launch(const float &departTime, const float &distance) {
     departureTime = departTime;
 
-    totalDistance = distance;
+    totalDistance = distance * LIGHT_YEAR;
     this->travelTime = static_cast<float>(velocity / totalDistance);
     this->arrivalTime = departureTime + travelTime;
 
@@ -50,6 +50,6 @@ void Spacecraft::updatePosition(const float currentTime) {
     }
 
     for (int i = 0; i < position.size(); ++i) {
-        this->position[i] = origin->position[i] + (directionVector[i] * (currentTime - departureTime));
+        this->position[i] = origin->position[i] + (directionVector[i] * (currentTime - departureTime) * velocity);
     }
 }
