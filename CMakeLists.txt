@@ -30,8 +30,6 @@ add_library(simulationLib
 
         simulation/CONSTANTS.h
 
-        simulation/visualization.cpp
-        simulation/visualization.h
 )
 
 add_executable(galaxy_generator simulation/main.cpp)
