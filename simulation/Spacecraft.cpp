@@ -44,7 +44,7 @@ void Spacecraft::updatePosition(const double currentTime) {
         return;
     }
 
-    std::cout << "Spaceship " << id << " (" << origin->id << "->" << destination->id << ")\n";
+    double timeElapsed = currentTime - departureTime;
 
     // Check if arrivalTime equals currentTime
     if (currentTime >= arrivalTime) {
@@ -52,15 +52,25 @@ void Spacecraft::updatePosition(const double currentTime) {
         arrived = true;
 
         if (print) {
-            std::cout << "Spaceship " << this->id << " arrived at destination" << std::endl;
-            std::cout << "\t Destination: " << destination->id << std::endl;
-            std::cout << "\t Time: " << currentTime << std::endl;
-            std::cout << "\t Distance: " << totalDistance << std::endl;
+            std::cout << "Spaceship " << this->id << " arrived at destination";
+            std::cout << " (" << origin->id << "->" << destination->id << ")" << std::endl;
+
+            std::cout << "\t Time Remaining: " << arrivalTime - currentTime << std::endl;
+            std::cout << "\t Time Elapsed: " << timeElapsed << std::endl;
+            std::cout << "\t Distance Remaining: " << totalDistance - (velocity * timeElapsed) << std::endl;
+            std::cout << "\t Arrival Time: " << arrivalTime << std::endl;
         }
         return;
     }
 
+    if (print) {
+        std::cout << "Spaceship " << id << " (" << origin->id << "->" << destination->id << ")\n";
+        std::cout << "\t Time Remaining: " << arrivalTime - currentTime << std::endl;
+        std::cout << "\t Time Elapsed: " << timeElapsed << std::endl;
+        std::cout << "\t Distance Remaining: " << totalDistance - (velocity * timeElapsed) << std::endl;
+    }
+
     for (int i = 0; i < position.size(); ++i) {
-        this->position[i] = origin->position[i] + (directionVector[i] * (currentTime - departureTime) * velocity);
+        this->position[i] = origin->position[i] + (directionVector[i] * velocity * timeElapsed);
     }
 }
