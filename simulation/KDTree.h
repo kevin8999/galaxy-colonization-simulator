@@ -87,7 +87,7 @@ public:
     Node* nearestNeighborRecursive(Node* top, Node* target, unsigned int depth);  // Helper function
     Node* nearestNeighbor(Node* target);  // Returns closest neighbor
 
-    Node *knnRecursive(Node *top, Node *target, unsigned int depth, std::priority_queue<Neighbor> &heap, unsigned int &numNodes);
-    std::vector<Neighbor> knn(Node *target, unsigned int &numNodes);  // Returns K number of closest nodes
+    Node* knnRecursive(Node* curr, Node* target, unsigned int depth, std::priority_queue<Neighbor>& heap, unsigned int& numNodes);
+    std::vector<Neighbor> knn(Node* target, unsigned int& numNodes);  // Returns K number of closest nodes
 };
 
