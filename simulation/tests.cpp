@@ -1,4 +1,4 @@
-#include "Galaxy.h"
+/*#include "Galaxy.h"
 #include "Star.h"
 #include "KDTree.h"
 
@@ -156,5 +156,10 @@ void getClosestStarsTest() {
 int main() {
     getClosestStarsTest();
 
+    return 0;
+}
+*/
+
+int main() {
     return 0;
 }
