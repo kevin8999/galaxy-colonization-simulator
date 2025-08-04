@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.28)
 project(galaxy_generator)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -29,6 +29,9 @@ add_library(simulationLib
         simulation/Clock.h
 
         simulation/CONSTANTS.h
+
+        simulation/visualization.cpp
+        simulation/visualization.h
 )
 
 add_executable(galaxy_generator simulation/main.cpp)
