@@ -35,8 +35,8 @@ add_library(simulationLib
 )
 
 add_executable(galaxy_generator simulation/main.cpp)
-target_link_libraries(galaxy_generator PRIVATE simulationLib)
+target_link_libraries(galaxy_generator PUBLIC simulationLib)
 
 
 add_executable(Tests simulation/tests.cpp)
-target_link_libraries(Tests PRIVATE simulationLib)
+target_link_libraries(Tests PUBLIC simulationLib)
