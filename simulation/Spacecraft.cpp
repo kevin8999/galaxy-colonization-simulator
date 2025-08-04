@@ -10,6 +10,10 @@ void Spacecraft::launch(const float &departTime) {
     this->travelTime = totalDistance / velocity;
     this->arrivalTime = departureTime + travelTime;
 
+    for (int i = 0; i < origin->position.size(); ++i) {
+        position.push_back(origin->position[i]);
+    }
+
     enRoute = true;
 }
 
