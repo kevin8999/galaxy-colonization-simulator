@@ -46,6 +46,8 @@ struct Spacecraft {
      */
     std::vector<float> directionVector;
 
+    bool print = true;
+
     Spacecraft() {
         enRoute = false;
         totalDistance = 0;
