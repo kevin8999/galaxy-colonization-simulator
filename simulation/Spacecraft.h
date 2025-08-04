@@ -51,23 +51,7 @@ struct Spacecraft {
 
     // TODO: Calculate velocity given a star's luminosity
 
-    void launch(const float& departTime) {
-        departureTime = departTime;
+    void launch(const float& departTime);
+    void launch(const float& departTime, const float& distance);
 
-        totalDistance = Calculator::calcDistance(origin, destination);
-        this->travelTime = static_cast<float>(velocity / totalDistance);
-        this->arrivalTime = departureTime + travelTime;
-
-        enRoute = true;
-    }
-
-    void launch(const float& departTime, const float& distance) {
-        departureTime = departTime;
-
-        totalDistance = distance;
-        this->travelTime = static_cast<float>(velocity / totalDistance);
-        this->arrivalTime = departureTime + travelTime;
-
-        enRoute = true;
-    }
 };
