@@ -44,7 +44,7 @@ public:
     void insertTree();
     void printClosest(const unsigned int &id);
 
-    void start(unsigned int id);
+    void colonizeFrom(unsigned int id);
     void update();
 
     ~Galaxy() {

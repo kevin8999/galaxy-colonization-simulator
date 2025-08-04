@@ -152,8 +152,8 @@ void Galaxy::visitClosest(const unsigned int target) {
     }
 }
 
-void Galaxy::start(unsigned int id) {
-    // Start colonization process
+void Galaxy::colonizeFrom(unsigned int id) {
+    // Start colonization process at `id`
     visited.insert(id);
     stars[id].visited = true;
 
