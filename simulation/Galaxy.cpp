@@ -169,26 +169,12 @@ void Galaxy::update() {
 
     for (auto it = ships.begin(); it != ships.end()) {
         Spacecraft& ship = *it;
+        ship.updatePosition(currentTime);
 
-        if (ship.enRoute) {
-            if (currentTime >= ship.arrivalTime) {
-                ship.enRoute = false;
+        if (ship.arrived) {
+            unsigned int& destinationID = ship.destination->id;
+            colonizeFrom(destinationID);
 
-                Star* destination = ship.destination;
-                destination->visited = true;
-                visited.insert(destination->id);
-
-                getClosestStars(destination->id, numClosestToSearch);
-                visitClosest(destination->id);
-            }
-            else {
-                // TODO: while ship has not arrived, update its current position using parametric equations
-            }
-
-            ++it;
-        }
-        else {
-            // Remove ship if not enRoute
             it = ships.erase(it);
         }
     }
