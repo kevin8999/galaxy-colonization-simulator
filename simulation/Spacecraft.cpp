@@ -46,7 +46,7 @@ void Spacecraft::updatePosition(const double currentTime) {
 
         if (print) {
             std::cout << "Spaceship " << this->id << " arrived at destination" << std::endl;
-            std::cout << "\t Destination: " destination->id << std::endl;
+            std::cout << "\t Destination: " << destination->id << std::endl;
             std::cout << "\t Time: " << currentTime << std::endl;
         }
         return;
