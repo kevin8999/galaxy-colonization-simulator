@@ -8,6 +8,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <thread>
 
 std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
     // Parse input of CSV
@@ -177,4 +178,67 @@ void Galaxy::update() {
             it = ships.erase(it);
         }
     }
+}
+
+void Galaxy::start() {
+    unsigned int startID = 0;
+    colonizeFrom(startID);
+
+    running = true;
+    started = true;
+    paused = false;
+}
+
+void Galaxy::run() {
+    if (started == false) {
+        std::cerr << "Galaxy::run() : Attempting to run Galaxy before calling Galaxy.start()" << std::endl;
+        return;
+    }
+
+    std::cout << "Running galaxy colonization simulation" << std::endl;
+
+    while (running) {
+        if (!paused) {
+            update();
+            std::this_thread::sleep_for(delay);
+            std::cout << "Updated\n";
+        }
+        else {
+            // Delay and do nothing
+            std::this_thread::sleep_for(delay);
+        }
+    }
+
+    std::cout << "Thread stopped." << "\n";
+}
+
+void Galaxy::pause() {
+    paused = true;
+    std::cout << "Galaxy colonization simulation paused." << std::endl;
+}
+
+void Galaxy::resume() {
+    paused = false;
+    std::cout << "Galaxy colonization simulation resumed." << std::endl;
+}
+
+void Galaxy::timerControl() {
+    std::string c;
+
+    while (true) {
+        std::cin >> c;
+
+        if (c == "p" || c == "pause") {
+            pause();
+        }
+        else if (c == "r" || c == "resume") {
+            resume();
+        }
+        else if (c == "q" || c == "quit") {
+            running = false;
+            std::cout << "Quitting out of program..." << std::endl;
+            break;
+        }
+    }
+
 }

@@ -11,6 +11,12 @@
 #include <set>
 #include <list>
 
+// Timer
+#include <thread>
+#include <atomic>
+#include <chrono>
+using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
+
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
 private:
@@ -30,6 +36,12 @@ private:
     Clock clock = Clock(10'000.0f);
 
 public:
+    std::atomic<bool> running = false;
+
+    bool paused  = true;
+    bool started = false;
+    std::chrono::milliseconds delay = 250ms;
+
     Galaxy() = default;
 
     std::vector<Star> load(const std::string& galaxyFile);
@@ -47,6 +59,13 @@ public:
 
     void colonizeFrom(unsigned int id);
     void update();
+
+    // Timer management
+    void start();
+    void run();
+    void pause();
+    void resume();
+    void timerControl();
 
     ~Galaxy() {
         neighbors = {};
