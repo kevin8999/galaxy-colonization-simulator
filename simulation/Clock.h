@@ -4,11 +4,14 @@ class Clock {
 private:
     // Time in years
     float currentTime = 0.0f;
-    float timeStep;
+    float timeStep;  // How many years to go forward
+
+    // How long to delay each tick by in seconds
+    float delay = 0.5f;
 
 public:
-    explicit Clock(const float delta) {
-        timeStep = delta;
+    explicit Clock(const float stepSize) {
+        timeStep = stepSize;
     }
 
     void tick() {
