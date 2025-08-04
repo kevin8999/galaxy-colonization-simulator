@@ -4,10 +4,6 @@
 
 #include "Star.h"
 
-// Speed of light in meters per second
-const float SPEED_OF_LIGHT = 299'792'458;
-const double LIGHT_YEAR = 9.460730473 * std::pow(10, 15);
-
 struct Spacecraft {
     unsigned int id;
     Star* origin = nullptr;
