@@ -39,6 +39,8 @@ void Spacecraft::updatePosition(const double currentTime) {
         return;
     }
 
+    std::cout << "Spaceship " << id << " (" << origin->id << "->" << destination->id << ")\n";
+
     // Check if arrivalTime equals currentTime
     if (currentTime >= arrivalTime) {
         enRoute = false;
@@ -48,6 +50,7 @@ void Spacecraft::updatePosition(const double currentTime) {
             std::cout << "Spaceship " << this->id << " arrived at destination" << std::endl;
             std::cout << "\t Destination: " << destination->id << std::endl;
             std::cout << "\t Time: " << currentTime << std::endl;
+            std::cout << "\t Distance: " << totalDistance << std::endl;
         }
         return;
     }
