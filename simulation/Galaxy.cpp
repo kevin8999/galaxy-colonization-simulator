@@ -98,7 +98,6 @@ void Galaxy::getClosestStars(const unsigned int& target, unsigned int& numCloses
     for (Neighbor& neighbor : closestNodes) {
         if (neighbor.node->id == target) continue;
         neighbors[target].push_back(neighbor);
-        visited.insert(neighbor.node->id);
     }
 }
 
