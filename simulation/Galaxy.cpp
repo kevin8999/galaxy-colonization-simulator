@@ -208,8 +208,12 @@ void Galaxy::run() {
     while (running) {
         if (!paused) {
             update();
+
+            std::cout << "Time: " << clock.now() << std::endl;
+            std::cout << "Spaceships En Route: " << ships.size() << std::endl;
+            std::cout << "Total Spaceships Sent: " << numShipsSent << std::endl;
+
             std::this_thread::sleep_for(delay);
-            std::cout << "Updated\n";
         }
         else {
             // Delay and do nothing
