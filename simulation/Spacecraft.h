@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Star.h"
-#include "Calculator.h"
 
 // Speed of light in meters per second
 const float SPEED_OF_LIGHT = 299'792'458;
