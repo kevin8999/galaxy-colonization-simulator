@@ -72,6 +72,6 @@ struct Spacecraft {
     void launch(const float& departTime);
     void launch(const float& departTime, const float& distance);
 
-    void getdirectionVector();
-    void updatePosition(const float currentTime);
+    void getDirectionVector();
+    void updatePosition(const double currentTime);
 };
