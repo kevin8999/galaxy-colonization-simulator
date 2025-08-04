@@ -235,24 +235,26 @@ void Galaxy::resume() {
 }
 
 void Galaxy::timerControl() {
-    std::string c;
+    // Lets user control timer using input
+
+    std::string command;
 
     while (true) {
-        std::cin >> c;
+        std::cin >> command;
 
-        if (c == "p" || c == "pause") {
+        if (command == "p" || command == "pause") {
             pause();
         }
-        else if (c == "r" || c == "resume") {
+        else if (command == "r" || command == "resume") {
             resume();
         }
-        else if (c == "q" || c == "quit") {
+        else if (command == "q" || command == "quit") {
             running = false;
             std::cout << "Quitting out of program..." << std::endl;
             break;
         }
         else {
-            std::cerr << "Galaxy::timerControl() : Unknown command: " << c << std::endl;
+            std::cerr << "Galaxy::timerControl() : Unknown command: " << command << std::endl;
         }
     }
 
