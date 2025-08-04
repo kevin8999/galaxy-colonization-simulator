@@ -72,4 +72,6 @@ struct Spacecraft {
     void launch(const float& departTime);
     void launch(const float& departTime, const float& distance);
 
+    void getParametricEquation();
+    void updatePosition(const float currentTime);
 };

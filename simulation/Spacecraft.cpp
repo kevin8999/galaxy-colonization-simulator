@@ -22,3 +22,34 @@ void Spacecraft::launch(const float &departTime, const float &distance) {
 
     enRoute = true;
 }
+void Spacecraft::getParametricEquation() {
+    // Gets parametric equation that models travel from star A to star B
+
+    // Calculates the normalized direction vector (parametric equation) from origin to destination.
+    //
+    // This function computes a unit vector representing the direction of travel in each spatial
+    // dimension. The result is stored in `parametricEquation`, which is later used to update the
+    // spacecraft's position over time.
+
+    for (int i = 0; i < origin->position.size(); ++i) {
+        float value = destination->position[i] - origin->position[i];
+        parametricEquation.push_back(static_cast<float>(value / totalDistance));
+    }
+}
+
+void Spacecraft::updatePosition(const float currentTime) {
+    if (parametricEquation.size() == 0) {
+        std::cerr << "Spacecraft::updatePosition() : Spacecraft.parametricEquation has a length of 0." << "\n";
+        return;
+    }
+
+    // Check if arrivalTime equals currentTime
+    if (currentTime >= arrivalTime) {
+        enRoute = false;
+        arrived = true;
+    }
+
+    for (int i = 0; i < position.size(); ++i) {
+        this->position[i] = origin->position[i] + (parametricEquation[i] * (currentTime - departureTime));
+    }
+}
