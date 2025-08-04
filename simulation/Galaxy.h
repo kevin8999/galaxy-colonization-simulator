@@ -19,6 +19,7 @@ private:
     std::set<unsigned int> visited;
 
     std::list<Spacecraft> ships;
+    unsigned int numShipsSent = 0;
 
     // Stores closest neighbors for a star
     std::unordered_map<unsigned int, std::vector<Neighbor> > neighbors;

@@ -127,7 +127,7 @@ void Galaxy::visit(Star* source, Star* destination, float& distance) {
     if (visited.find(source->id) == visited.end() || visited.find(destination->id) != visited.end())
         return;
 
-    unsigned int id = ships.size();
+    unsigned int id = ++numShipsSent;
     float launchTime = clock.now();
     Spacecraft ship(id, source, destination, launchTime, distance);
     ships.push_back(ship);
