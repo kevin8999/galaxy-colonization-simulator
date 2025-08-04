@@ -33,7 +33,8 @@ private:
 
     KDTree tree;
 
-    Clock clock = Clock(10'000.0f);
+    double stepSize = std::pow(10, 11);
+    Clock clock = Clock(stepSize);
 
 public:
     std::atomic<bool> running = false;
