@@ -34,7 +34,7 @@ void Spacecraft::getDirectionVector() {
 
     for (int i = 0; i < origin->position.size(); ++i) {
         float value = destination->position[i] - origin->position[i];
-        directionVector.push_back(static_cast<float>(value / totalDistance));
+        directionVector.push_back(value / totalDistance);
     }
 }
 
