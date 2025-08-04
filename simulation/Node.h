@@ -87,7 +87,7 @@ public:
         return true;
     }
 
-    void print(std::string beginChar) const {
+    void print(const std::string& beginChar) const {
         // Prints contents of Node object with a beginning character
         std::cout << beginChar << "ID: " << this->id << "\n";
         std::cout << beginChar << "Position: " << "(";
