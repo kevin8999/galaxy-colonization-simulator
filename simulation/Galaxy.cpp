@@ -246,6 +246,9 @@ void Galaxy::timerControl() {
             std::cout << "Quitting out of program..." << std::endl;
             break;
         }
+        else {
+            std::cerr << "Galaxy::timerControl() : Unknown command: " << c << std::endl;
+        }
     }
 
 }
