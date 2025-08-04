@@ -66,6 +66,7 @@ struct Spacecraft {
         this->id = id;
         this->origin = origin;
         this->destination = destination;
+        getDirectionVector();
 
         // Launch at departureTime
         this->launch(departureTime, distance);
