@@ -213,7 +213,7 @@ Node* KDTree::nearestNeighbor(Node* target) {
 }
 
 Node* KDTree::knnRecursive(Node* curr, Node* target, unsigned int depth,
-                            std::priority_queue<Neighbor>& heap, unsigned int& numNodes) {
+                            std::priority_queue<Neighbor>& heap, unsigned int& numNeighbors) {
     // Finds the K closest nodes to target
 
     if (curr == nullptr)
@@ -239,11 +239,11 @@ Node* KDTree::knnRecursive(Node* curr, Node* target, unsigned int depth,
     }
 
     // Calculate distance for nodes in near branch
-    knnRecursive(nearBranch, target, depth + 1, heap, numNodes);
+    knnRecursive(nearBranch, target, depth + 1, heap, numNeighbors);
 
     Neighbor currNeighbor(target, curr);
 
-    if (heap.size() < numNodes) {
+    if (heap.size() < numNeighbors) {
         // Push closestNode and curr if there's enough room in heap
         heap.push(currNeighbor);
     }
@@ -256,17 +256,19 @@ Node* KDTree::knnRecursive(Node* curr, Node* target, unsigned int depth,
     // Check to see if plane is closer to target than curr
     float distanceToPlane = std::abs(target->position[dimension] - curr->position[dimension]);
 
-    // Check farBranch
-    if (heap.size() < numNodes || distanceToPlane < heap.top().distance) {
-        knnRecursive(farBranch, target, depth + 1, heap, numNodes);
+    if (heap.size() < numNeighbors || distanceToPlane < heap.top().distance) {
+        // Check farBranch
+        knnRecursive(farBranch, target, depth + 1, heap, numNeighbors);
     }
 
     return curr;
 }
 
-std::vector<Neighbor> KDTree::knn(Node* target, unsigned int& numNodes) {
+std::vector<Neighbor> KDTree::knn(Node* target, unsigned int& numNeighbors) {
+    // K Nearest Neighbors. Grabs the nearest neighboring stars
+
     std::priority_queue<Neighbor> heap;
-    knnRecursive(root, target, 0, heap, numNodes);
+    knnRecursive(root, target, 0, heap, numNeighbors);
 
     std::vector<Neighbor> result;
     while (!heap.empty()) {
