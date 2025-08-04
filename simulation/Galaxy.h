@@ -54,7 +54,7 @@ public:
     void visit(Star* source, Star* destination, float &distance);
     void visit(unsigned int source, unsigned int destination, float &distance);
 
-    void insertTree();
+    void insertIntoKDTree();
     void printClosest(const unsigned int &id);
 
     void colonizeFrom(unsigned int id);

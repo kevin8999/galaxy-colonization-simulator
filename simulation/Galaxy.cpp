@@ -102,9 +102,10 @@ void Galaxy::getClosestStars(const unsigned int& target, unsigned int& numCloses
     }
 }
 
-void Galaxy::insertTree() {
+void Galaxy::insertIntoKDTree() {
     // Insert stars into tree
     tree.insertStars(stars);
+    std::cout << "Finished inserting " << stars.size() << " stars into KDTree" << std::endl;
 }
 
 void Galaxy::printClosest(const unsigned int &id) {
