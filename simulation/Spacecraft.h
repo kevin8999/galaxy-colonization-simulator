@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cmath>
-
 #include "Star.h"
 
 struct Spacecraft {
