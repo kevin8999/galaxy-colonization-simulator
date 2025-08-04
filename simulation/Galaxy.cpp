@@ -187,6 +187,8 @@ void Galaxy::update() {
 
 void Galaxy::start() {
     unsigned int startID = 0;
+    insertIntoKDTree();
+
     colonizeFrom(startID);
 
     running = true;
