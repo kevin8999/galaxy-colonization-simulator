@@ -2,6 +2,7 @@
 #include "KDTree.h"
 #include "Node.h"
 #include "Neighbor.h"
+#include "CONSTANTS.h"
 
 #include <fstream>
 #include <iostream>
@@ -43,10 +44,10 @@ std::vector<Star> Galaxy::load(const std::string& galaxyFile) {
         unsigned long id = std::stoul(row[1]);
         star.id = static_cast<unsigned int>(id); // ID in data starts at 1
         star.position = {
-            // Convert each value to float and store as position star.position
-            std::stof(row[8]),  // x
-            std::stof(row[9]),  // y
-            std::stof(row[10])  // z
+            // Convert each value to double and store as position star.position
+            std::stod(row[8])  * LIGHT_YEAR, // x
+            std::stod(row[9])  * LIGHT_YEAR, // y
+            std::stod(row[10]) * LIGHT_YEAR  // z
         };
         star.solarLuminosity = std::stof(row[18]);
 
