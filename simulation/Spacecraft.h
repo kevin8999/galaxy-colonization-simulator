@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "Star.h"
 
 // Speed of light in meters per second
