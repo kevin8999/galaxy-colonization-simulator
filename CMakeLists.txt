@@ -27,6 +27,8 @@ add_library(simulationLib
 
         simulation/Clock.cpp
         simulation/Clock.h
+
+        simulation/CONSTANTS.h
 )
 
 add_executable(galaxy_generator simulation/main.cpp)
