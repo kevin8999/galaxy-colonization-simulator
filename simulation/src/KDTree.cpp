@@ -4,9 +4,9 @@
 #include <set>
 #include <bits/stdc++.h>
 
-#include "Calculator.h"
-#include "KDTree.h"
-#include "Neighbor.h"
+#include "../include/Calculator.h"
+#include "../include/KDTree.h"
+#include "../include/Neighbor.h"
 
 
 void KDTree::setDimensions(unsigned int &dim) {

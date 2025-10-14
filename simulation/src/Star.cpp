@@ -1,4 +1,4 @@
-#include "Star.h"
+#include "../include/Star.h"
 
 #include <iostream>
 

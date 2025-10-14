@@ -1,8 +1,8 @@
-#include "Galaxy.h"
-#include "KDTree.h"
-#include "Node.h"
-#include "Neighbor.h"
-#include "CONSTANTS.h"
+#include "../include/Galaxy.h"
+#include "../include/KDTree.h"
+#include "../include/Node.h"
+#include "../include/Neighbor.h"
+#include "../include/CONSTANTS.h"
 
 #include <fstream>
 #include <iostream>

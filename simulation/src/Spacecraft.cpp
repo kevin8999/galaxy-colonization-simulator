@@ -1,5 +1,5 @@
-#include "Spacecraft.h"
-#include "Calculator.h"
+#include "../include/Spacecraft.h"
+#include "../include/Calculator.h"
 
 #include <iostream>
 

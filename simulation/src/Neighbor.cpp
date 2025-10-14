@@ -1,5 +1,5 @@
-#include "Neighbor.h"
-#include "Calculator.h"
+#include "../include/Neighbor.h"
+#include "../include/Calculator.h"
 
 Neighbor::Neighbor(Node *target, Node *node) {
     this->target = target;

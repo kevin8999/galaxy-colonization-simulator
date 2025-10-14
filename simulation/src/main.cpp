@@ -1,4 +1,4 @@
-#include "Galaxy.h"
+#include "../include/Galaxy.h"
 #include <thread>
 
 int main() {

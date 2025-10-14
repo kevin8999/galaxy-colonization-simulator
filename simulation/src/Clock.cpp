@@ -1,4 +1,4 @@
-#include "Clock.h"
+#include "../include/Clock.h"
 
 void Clock::tick() {
     currentTime += timeStep;

@@ -1,4 +1,4 @@
-#include "Calculator.h"
+#include "../include/Calculator.h"
 
 #include <cmath>
 #include <iostream>
