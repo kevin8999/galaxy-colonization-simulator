@@ -21,11 +21,9 @@ using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
 // Stores a galaxy of stars as a digraph representation
 class Galaxy {
 private:
-    std::vector<Star> stars;
     unsigned int dimensions;
     std::set<unsigned int> visited;
 
-    std::list<Spacecraft> ships;
     unsigned int numShipsSent = 0;
 
     // Stores closest neighbors for a star
@@ -38,6 +36,9 @@ private:
     Clock clock = Clock(stepSize);
 
 public:
+    std::vector<Star> stars;
+    std::list<Spacecraft> ships;
+
     std::atomic<bool> running = false;
 
     bool paused  = true;
