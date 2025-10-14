@@ -50,6 +50,7 @@ public:
     void print(int max = 50) const;
 
     std::vector<Star> getStars();
+    std::list<Spacecraft> getShips();
 
     void getClosestStars(const unsigned int &target, unsigned int &numClosest);  // Gets closest stars for target
     void visitClosest(unsigned int target);
