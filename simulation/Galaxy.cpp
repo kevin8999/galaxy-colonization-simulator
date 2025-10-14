@@ -80,6 +80,10 @@ std::vector<Star> Galaxy::getStars() {
     return stars;
 }
 
+std::list<Spacecraft> Galaxy::getShips() {
+    return ships;
+}
+
 void Galaxy::getClosestStars(const unsigned int& target, unsigned int& numClosest) {
     // Get closest stars to target
 
